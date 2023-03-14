@@ -39,7 +39,7 @@ class StartLoginQuit(SettingBrowserClass):
             time.sleep(10)
 
             # Создание файла куки
-            with open(f"/home/ivan/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies", "wb") as f:
+            with open(f"{os.path.expanduser('~')}/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies", "wb") as f:
                 pickle.dump(browser.get_cookies(), f)
 
             print(f'Account{self.count}: [+] Вошел успешно (Залогинился)')
@@ -51,7 +51,7 @@ class StartLoginQuit(SettingBrowserClass):
 
     def close_browser(self):
         try:
-            with open(f"//home/ivan/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies", "ab") as f:
+            with open(f"{os.path.expanduser('~')}/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies", "ab") as f:
                 pickle.dump(self.browser.get_cookies(), f)
             self.browser.close()
             self.browser.quit()
@@ -61,14 +61,14 @@ class StartLoginQuit(SettingBrowserClass):
             print(f'Account{self.count}: {e}')
 
     def start_browser(self):
-        file_cookie = os.path.isfile(f'/home/ivan/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies')
+        file_cookie = os.path.isfile(f'{os.path.expanduser("~")}/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies')
         browser = self.browser
 
         if file_cookie:
             try:
                 browser.get('https://www.reddit.com/login/')
                 # Проверяем, есть ли куки и загружаем их.
-                with open(f"/home/ivan/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies", "rb") as f:
+                with open(f"/{os.path.expanduser('~')}/PycharmProjects/Reddit_Up_Vote_v1/Cookie/{self.username}_cookies", "rb") as f:
                     cookies = pickle.load(f)
                     for cookie in cookies:
                         browser.add_cookie(cookie)

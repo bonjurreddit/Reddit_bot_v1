@@ -160,7 +160,7 @@ def main():
             Mass.setting_one_account_hard(number_account)
 
         if start_question == '5':
-            Mass.check_acc(1)
+            Mass.check_acc(3)
 
         if start_question == '6':
             min_num_account = int(input('Введи диапазон аккаунтов, для лайкинга! \n С какого аккаунта стартуем? (Напиши цифру): '))

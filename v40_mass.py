@@ -173,6 +173,25 @@ def main():
                 with Pool(number_of_active_profiles) as p:  # МУЛЬТИПРОЦЕССИНГ
                     p.map(Mass.setting_one_account_hard, loading_profile_data)
 
+        if start_question == '7':
+            # Список диапазонов аккаунтов
+            ranges = []
+            for i in range(5):
+                print(f'Диапазон {i+1}')
+                start = int(input('С какого аккаунта стартуем? (Напиши цифру): '))
+                end = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1
+                ranges.append((start, end))
+
+            for start, end in ranges:
+                number_of_active_profiles = end - start
+                loading_profile_data = [i for i in range(start, end)]
+
+                if loading_profile_data is not None:
+                    with Pool(number_of_active_profiles) as p:
+                        p.map(Mass.setting_one_account_hard, loading_profile_data)
+                    time.sleep(random.randint(175, 190))
+
+
 
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')

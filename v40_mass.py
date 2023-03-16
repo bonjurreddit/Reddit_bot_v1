@@ -17,9 +17,9 @@ class Mass:  # Класс для массовых действий
     @staticmethod
     def start_mass_like(i):  # start for script # Старт основого скрипта
         my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/selfie'
-        sub_name = 'selfie'
-        post_title = 'New jeans can make you feel fabulous even if you are just doing the washing up! F36.'
+        url = 'https://www.reddit.com/r/naturaltitties/hot/'
+        sub_name = 'naturaltitties'
+        post_title = 'I‘m not a mom but my breasts look like they can feed a bunch'
 
         try:
             my_like.start_browser()
@@ -176,20 +176,19 @@ def main():
         if start_question == '7':
             # Список диапазонов аккаунтов
             ranges = []
-            for i in range(5):
+            for i in range(4):
                 print(f'Диапазон {i+1}')
                 start = int(input('С какого аккаунта стартуем? (Напиши цифру): '))
                 end = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1
                 ranges.append((start, end))
 
             for start, end in ranges:
-                number_of_active_profiles = end - start
+                number_of_active_profiles = end - start + 1
                 loading_profile_data = [i for i in range(start, end)]
 
                 if loading_profile_data is not None:
                     with Pool(number_of_active_profiles) as p:
-                        p.map(Mass.setting_one_account_hard, loading_profile_data)
-                    time.sleep(random.randint(175, 190))
+                        p.map(Mass.start_mass_like, loading_profile_data)
 
 
 

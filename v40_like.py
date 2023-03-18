@@ -19,6 +19,7 @@ class UpVote(SettingAccount):
         self.share_menu = '_2uYY-KeuYHKiwl-9aF0UiL PWY92ySDjTYrTAiutq4ty'
         self.block_with_up_vote_top = '#overlayScrollContainer'
         self.block_with_up_vote_side = '#overlayScrollContainer > div._1npCwF50X2J7Wt82SZi6J0 > div.u35lf2ynn4jHsVUwPmNU.Dx3UxiK86VcfkFQVHNXNi > div.uI_hDmU5GSiudtABRz_37'
+        self.reserve_down_vote = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2udhMC-jldHp_EpAuBeSR1.PaJBYLqPf_Gie2aZntVQ7._2OVNlZuUd8L9v0yVECZ2iA > div.uI_hDmU5GSiudtABRz_37'
 
     def find_communities_use_search(self, sub_name):
         try:
@@ -171,6 +172,16 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [-] НЕ поставил ДИЗлайк через боковую панель')
             print(f'Account{self.count}: {e}')
 
+    def down_vote_reserve(self):
+        try:
+            self.random_time_sleep_fast()
+            self.move_to_and_click_second_static_css(self.reserve_down_vote)
+            self.random_time_sleep_large()
+            print(f'Account{self.count}: [+] Поставил ДИЗлайк через резерв!')
+        except Exception as e:
+            print(f'Account{self.count}: [-] НЕ поставил ДИЗлайк через резерв')
+            print(f'Account{self.count}: {e}')
+
     def click_save(self):
         try:
             self.random_time_sleep_fast()
@@ -188,10 +199,13 @@ class UpVote(SettingAccount):
             self.up_vote_through_side()
 
     def down_vote_random(self):
-        if random.random() < 0.5:
-            self.down_vote_through_post_top()
-        else:
-            self.down_vote_through_side()
+        try:
+            if random.random() < 0.5:
+                self.down_vote_through_post_top()
+            else:
+                self.down_vote_through_side()
+        except:
+            self.down_vote_reserve()
 
     def save_or_share_or_pass(self):
         if random.random() < 0.5:

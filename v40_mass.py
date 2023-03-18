@@ -12,40 +12,43 @@ import time
 class Mass:  # Класс для массовых действий
 
     def __init__(self):
-        self.url = ''
-        self.sub_name = ''
-        self.post_title_like = ''
-        self.post_title_dis = ''
-
-    def start_mass_like(self, i):  # start for script # Старт основого скрипта
+        pass
+    @staticmethod
+    def start_mass_like(i):  # start for script # Старт основого скрипта
         my_like = UpVote(i)
+        url = 'https://www.reddit.com/r/selfie/'
+        sub_name = 'selfie'
+        post_title_like = 'Good morning ☀️'
 
         try:
             my_like.start_browser()
-            my_like.open_communities_url(self.url)
+            my_like.open_communities_url(url)
             my_like.random_subscribe()
-            my_like.tab_new(self.sub_name)
-            my_like.search_post_with_title_name(self.post_title_like)
+            my_like.tab_new(sub_name)
+            my_like.search_post_with_title_name(post_title_like)
             my_like.up_vote_random()
             my_like.save_or_share_or_pass()
             my_like.close_browser()
 
         except Exception as e:
-            my_like.start_menu()
+            my_like.close_browser()
             print(f'Проблемы с масс.лайкингом: {e}')
 
-    def start_mass_dislike(self, i):  # Cтарт масс дизлайк
+    @staticmethod
+    def start_mass_dislike(i):  # Cтарт масс дизлайк
         my_like = UpVote(i)
+        url = 'https://www.reddit.com/r/selfie/'
+        post_title_dis = 'Anyone awake (f25)'
         try:
             my_like.start_browser()
-            my_like.open_communities_url(self.url)
+            my_like.open_communities_url(url)
             my_like.random_subscribe()
-            my_like.search_post_with_title_name(self.post_title_dis)
+            my_like.search_post_with_title_name(post_title_dis)
             my_like.down_vote_random()
             my_like.close_browser()
 
         except Exception as e:
-            my_like.start_menu()
+            my_like.close_browser()
             print(f'Проблемы с масс.ДИЗлайкингом: {e}')
 
     @staticmethod
@@ -202,6 +205,17 @@ def main():
                 if loading_profile_data is not None:
                     with Pool(number_of_active_profiles) as p:
                         p.map(Mass.start_mass_like, loading_profile_data)
+
+        if start_question == '8':
+            min_num_account = int(input('Введи диапазон аккаунтов, для лайкинга! \n С какого аккаунта стартуем? (Напиши цифру): '))
+            max_num_account = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1
+            number_of_active_profiles = int(max_num_account - min_num_account)
+
+            loading_profile_data = [i for i in range(min_num_account, max_num_account)]  # Генерация списка аккаунтов
+
+            if loading_profile_data is not None:
+                with Pool(number_of_active_profiles) as p:  # МУЛЬТИПРОЦЕССИНГ
+                    p.map(Mass.start_mass_dislike, loading_profile_data)
 
 
 

@@ -288,7 +288,7 @@ class SettingAccount(StartLoginQuit):
 
     def move_to_and_click_second_static_css(self, static_element):
         parent = self.browser.find_element(By.CSS_SELECTOR, static_element)
-        button = parent.find_element(By.CSS_SELECTOR, 'button')[2]
+        button = parent.find_elements(By.CSS_SELECTOR, 'button')[1]
         self.actions.move_to_element(button)
         self.random_time_sleep_big()
         self.actions.click().perform()

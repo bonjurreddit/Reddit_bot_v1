@@ -137,7 +137,7 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [+] Поставил лайк через ТОП!')
 
         except Exception as e:
-            print(f'Account{self.count}: [-] НЕ подписался на саб')
+            print(f'Account{self.count}: [-] НЕ ппоставил лайк через ТОП')
             print(f'Account{self.count}: {e}')
 
     def up_vote_through_side(self):
@@ -147,7 +147,28 @@ class UpVote(SettingAccount):
             self.random_time_sleep_large()
             print(f'Account{self.count}: [+] Поставил лайк через боковую панель!')
         except Exception as e:
-            print(f'Account{self.count}: [-] НЕ подписался на саб')
+            print(f'Account{self.count}: [-] НЕ поставил лайк через боковую панель')
+            print(f'Account{self.count}: {e}')
+
+    def down_vote_through_post_top(self):
+        try:
+            self.random_time_sleep_fast()
+            self.move_to_and_click_second_static_css(self.block_with_up_vote_top)
+            self.random_time_sleep_large()
+            print(f'Account{self.count}: [+] Поставил ДИЗлайк через ТОП!')
+
+        except Exception as e:
+            print(f'Account{self.count}: [-] НЕ подписался дизлайк через ТОП')
+            print(f'Account{self.count}: {e}')
+
+    def down_vote_through_side(self):
+        try:
+            self.random_time_sleep_fast()
+            self.move_to_and_click_second_static_css(self.block_with_up_vote_side)
+            self.random_time_sleep_large()
+            print(f'Account{self.count}: [+] Поставил ДИЗлайк через боковую панель!')
+        except Exception as e:
+            print(f'Account{self.count}: [-] НЕ поставил ДИЗлайк через боковую панель')
             print(f'Account{self.count}: {e}')
 
     def click_save(self):
@@ -165,6 +186,12 @@ class UpVote(SettingAccount):
             self.up_vote_through_post_top()
         else:
             self.up_vote_through_side()
+
+    def down_vote_random(self):
+        if random.random() < 0.5:
+            self.down_vote_through_post_top()
+        else:
+            self.down_vote_through_side()
 
     def save_or_share_or_pass(self):
         if random.random() < 0.5:

@@ -12,22 +12,20 @@ import time
 class Mass:  # Класс для массовых действий
 
     def __init__(self):
-        pass
+        self.url = ''
+        self.sub_name = ''
+        self.post_title_like = ''
+        self.post_title_dis = ''
 
-    @staticmethod
-    def start_mass_like(i):  # start for script # Старт основого скрипта
+    def start_mass_like(self, i):  # start for script # Старт основого скрипта
         my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/collegesluts'
-        sub_name = 'collegesluts'
-        post_title = 'You can go down on me anytime'
 
         try:
             my_like.start_browser()
-            # my_like.open_sub_random(sub_name, url)
-            my_like.open_communities_url(url)
+            my_like.open_communities_url(self.url)
             my_like.random_subscribe()
-            my_like.tab_new(sub_name)
-            my_like.search_post_with_title_name(post_title)
+            my_like.tab_new(self.sub_name)
+            my_like.search_post_with_title_name(self.post_title_like)
             my_like.up_vote_random()
             my_like.save_or_share_or_pass()
             my_like.close_browser()
@@ -35,6 +33,20 @@ class Mass:  # Класс для массовых действий
         except Exception as e:
             my_like.start_menu()
             print(f'Проблемы с масс.лайкингом: {e}')
+
+    def start_mass_dislike(self, i):  # Cтарт масс дизлайк
+        my_like = UpVote(i)
+        try:
+            my_like.start_browser()
+            my_like.open_communities_url(self.url)
+            my_like.random_subscribe()
+            my_like.search_post_with_title_name(self.post_title_dis)
+            my_like.down_vote_random()
+            my_like.close_browser()
+
+        except Exception as e:
+            my_like.start_menu()
+            print(f'Проблемы с масс.ДИЗлайкингом: {e}')
 
     @staticmethod
     def start_mass_random_like(i):  # start for script # Старт основого скрипта
@@ -118,7 +130,8 @@ class Mass:  # Класс для массовых действий
 
 def main():
     try:  # Переменные для пула
-        start_question = input("Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \nСделай выбор и напиши цифру(без точки): ")
+        print('"Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \n 8. Дизлайк в один диапазон')
+        start_question = input("Сделай выбор и напиши цифру(без точки): ")
 
         if start_question == '1':
             min_num_account = int(input('Введи диапазон аккаунтов, для лайкинга! \n С какого аккаунта стартуем? (Напиши цифру): '))

@@ -89,8 +89,8 @@ user_setting_dict = {
         "timeOffset": -480
     },
     "profile3": {
-        "login": "Practical-Program165",
-        "password": "HillsE90fl7",
+        "login": "Individual_Focus_782",
+        "password": "U2E8g6y3f9l0j5",
         "PROXY": "192.241.68.140",
         "HOST": 8000,
         "PROXY_USER": "qQdd4u",

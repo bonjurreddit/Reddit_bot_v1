@@ -16,9 +16,9 @@ class Mass:  # Класс для массовых действий
     @staticmethod
     def start_mass_like(i):  # start for script # Старт основого скрипта
         my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/selfie/'
-        sub_name = 'selfie'
-        post_title_like = 'Good morning ☀️'
+        url = 'https://www.reddit.com/r/smallboobs'
+        sub_name = 'smallboobs'
+        post_title_like = 'I have a magic trick to show you'
 
         try:
             my_like.start_browser()
@@ -37,8 +37,8 @@ class Mass:  # Класс для массовых действий
     @staticmethod
     def start_mass_dislike(i):  # Cтарт масс дизлайк
         my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/selfie/'
-        post_title_dis = 'Anyone awake (f25)'
+        url = 'https://www.reddit.com/r/selfie'
+        post_title_dis = 'That\'s a sweet ass that enjoys slapping [f]'
         try:
             my_like.start_browser()
             my_like.open_communities_url(url)
@@ -133,7 +133,7 @@ class Mass:  # Класс для массовых действий
 
 def main():
     try:  # Переменные для пула
-        print('"Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \n 8. Дизлайк в один диапазон')
+        print('Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \n 8. Дизлайк в один диапазон')
         start_question = input("Сделай выбор и напиши цифру(без точки): ")
 
         if start_question == '1':
@@ -192,7 +192,7 @@ def main():
         if start_question == '7':
             # Список диапазонов аккаунтов
             ranges = []
-            for i in range(15):
+            for i in range(21):
                 print(f'Диапазон {i+1}')
                 start = int(input('С какого аккаунта стартуем? (Напиши цифру): '))
                 end = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1

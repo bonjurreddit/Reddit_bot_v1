@@ -95,7 +95,7 @@ class UpVote(SettingAccount):
 
         # Счетчик на выход из бесконечного цикла, в случае ошибки
         self.calls_count += 1
-        if self.calls_count >= 150:
+        if self.calls_count >= 300:
             print(f'Account{self.count}: [-] Не смог найти пост')
             self.close_browser()
             self.calls_count = 0

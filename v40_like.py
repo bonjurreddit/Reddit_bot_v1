@@ -11,7 +11,8 @@ class UpVote(SettingAccount):
 
         # Элементы Реддит
         self.search_reddit = '#header-search-bar'
-        self.tab_new_css = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2OVNlZuUd8L9v0yVECZ2iA > div.wBtTDilkW_rtT2k5x3eie > div._2pUO1Sfe7WlIHvq6goN3Pz > a:nth-child(2)'
+        # self.tab_new_css = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2OVNlZuUd8L9v0yVECZ2iA > div.wBtTDilkW_rtT2k5x3eie > div._2pUO1Sfe7WlIHvq6goN3Pz > a:nth-child(2)'
+        self.tab_new_css = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._2OVNlZuUd8L9v0yVECZ2iA > div.wBtTDilkW_rtT2k5x3eie > div._2pUO1Sfe7WlIHvq6goN3Pz > a:nth-child(2)'
         self.btn_join = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div.MSTY2ZpsdupobywLEfx9u > div > div.QscnL9OySMkHhGudEvEya > div > div._2I_YJCANrzkY2DZkeu2nht > div > button'
         self.btn_subscribe = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div.MSTY2ZpsdupobywLEfx9u > div > div.QscnL9OySMkHhGudEvEya > div > div._2I_YJCANrzkY2DZkeu2nht > div._1Q_zPN5YtTLQVG72WhRuf3 > button'
         self.btn_up_vote = '#upvote-button-t3_11jswna-overlay'

@@ -18,7 +18,7 @@ class Mass:  # Класс для массовых действий
         my_like = UpVote(i)
         url = 'https://www.reddit.com/r/smallboobs'
         sub_name = 'smallboobs'
-        post_title_like = 'I have a magic trick to show you'
+        post_title_like = 'Wait for it'
 
         try:
             my_like.start_browser()
@@ -192,7 +192,7 @@ def main():
         if start_question == '7':
             # Список диапазонов аккаунтов
             ranges = []
-            for i in range(21):
+            for i in range(11):
                 print(f'Диапазон {i+1}')
                 start = int(input('С какого аккаунта стартуем? (Напиши цифру): '))
                 end = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1

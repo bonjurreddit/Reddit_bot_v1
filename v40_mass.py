@@ -16,9 +16,9 @@ class Mass:  # Класс для массовых действий
     @staticmethod
     def start_mass_like(i):  # start for script # Старт основого скрипта
         my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/smallboobs'
-        sub_name = 'smallboobs'
-        post_title_like = 'Wait for it'
+        url = 'https://www.reddit.com/r/BigBoobsGW'
+        sub_name = 'BigBoobsGW'
+        post_title_like = "short but oh so sweet 🥹"
 
         try:
             my_like.start_browser()
@@ -37,8 +37,8 @@ class Mass:  # Класс для массовых действий
     @staticmethod
     def start_mass_dislike(i):  # Cтарт масс дизлайк
         my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/selfie'
-        post_title_dis = 'That\'s a sweet ass that enjoys slapping [f]'
+        url = 'https://www.reddit.com/r/ass'
+        post_title_dis = 'Can my warm butt make your soldier stand up'
         try:
             my_like.start_browser()
             my_like.open_communities_url(url)
@@ -192,7 +192,7 @@ def main():
         if start_question == '7':
             # Список диапазонов аккаунтов
             ranges = []
-            for i in range(11):
+            for i in range(7):
                 print(f'Диапазон {i+1}')
                 start = int(input('С какого аккаунта стартуем? (Напиши цифру): '))
                 end = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1

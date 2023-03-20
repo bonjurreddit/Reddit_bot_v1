@@ -49,7 +49,10 @@ class SettingAccount(StartLoginQuit):
 
     @staticmethod
     def random_time_sleep_fast():
-        return time.sleep(random.randint(1500, 6000) / 1000)
+        # midle
+        # return time.sleep(random.randint(1500, 6000) / 1000)
+        # agressive
+        return time.sleep(random.randint(1500, 4000) / 1000)
 
     @staticmethod
     def random_time_sleep_large():

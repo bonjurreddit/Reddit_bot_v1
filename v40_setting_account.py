@@ -1,4 +1,4 @@
-from v40_start_for_server import StartLoginQuit
+from v40_start import StartLoginQuit
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -42,6 +42,10 @@ class SettingAccount(StartLoginQuit):
         self.switch_nsfw = '#AppRouter-main-content > div > div._1OrNGmpfcSuSebbZM5vYq4 > div._3FVpvZ7OLbS_68QzaxplxT > div:nth-child(9) > div._1oREjd5ToMFah-VfX5Zt1z'  # class
         self.switch_adult_cont = '#AppRouter-main-content > div > div._1OrNGmpfcSuSebbZM5vYq4 > div._3FVpvZ7OLbS_68QzaxplxT > div:nth-child(3) > div._1oREjd5ToMFah-VfX5Zt1z'  # xpath
         self.switch_safe_browsing = '#AppRouter-main-content > div > div._1OrNGmpfcSuSebbZM5vYq4 > div._3FVpvZ7OLbS_68QzaxplxT > div:nth-child(4) > div._1oREjd5ToMFah-VfX5Zt1z'   # xpath
+
+    @staticmethod
+    def random_time_for_scroll():
+        return time.sleep(random.randint(1000, 1500) / 1000)
 
     @staticmethod
     def random_time_for_send_keys():
@@ -116,6 +120,31 @@ class SettingAccount(StartLoginQuit):
             self.actions.move_to_element(element).click().perform()
         except Exception as e:
             print(f'Account{self.count}: [-] Не удалось кликнуть по NAME')
+            # print(f'Account{self.count}: {e}')
+
+    def click_element_ls(self, element):
+        try:
+            self.actions.move_to_element(element).click().perform()
+        except Exception as e:
+            print(f'Account{self.count}: [-] Не удалось кликнуть по элементу списка')
+            # print(f'Account{self.count}: {e}')
+
+    def move_to_element_ls(self, element):
+        try:
+            width = element.size['width']
+            height = element.size['height']
+            x_offset = random.randint(0, width)
+            y_offset = random.randint(0, height)
+
+            self.actions.move_by_offset(x_offset, y_offset)
+            self.actions.perform()
+            time.sleep(random.randint(1, 5))
+
+            self.actions.move_to_element(element).perform()
+            time.sleep(random.randint(1, 5))
+
+        except Exception as e:
+            print(f'Account{self.count}: [-] Не удалось навести на элемент списка')
             # print(f'Account{self.count}: {e}')
 
     def move_to(self, element_page):
@@ -251,6 +280,19 @@ class SettingAccount(StartLoginQuit):
             print(f'Account{self.count}: [-] Не удалось навести на NAME')
             # print(f'Account{self.count}: {e}')
 
+    def move_and_click_element_ls(self, element):
+        self.random_time_sleep_fast()
+        self.move_to_element_ls(element)
+        self.click_element_ls(element)
+        self.random_time_sleep_fast()
+
+    def move_and_click_id(self, element):
+        self.random_time_sleep_fast()
+        self.move_to_id(element)
+        self.click_id(element)
+        self.random_time_sleep_fast()
+
+
     def move_and_click_xpath(self, element):
         self.random_time_sleep_fast()
         self.move_to(element)
@@ -285,26 +327,26 @@ class SettingAccount(StartLoginQuit):
         parent = self.browser.find_element(By.CSS_SELECTOR, static_element)
         button = parent.find_element(By.CSS_SELECTOR, 'button')
         self.actions.move_to_element(button)
-        self.random_time_sleep_big()
+        self.random_time_sleep_fast()
         self.actions.click().perform()
-        self.random_time_sleep_big()
+        self.random_time_sleep_fast()
 
     def move_to_and_click_second_static_css(self, static_element):
         parent = self.browser.find_element(By.CSS_SELECTOR, static_element)
         button = parent.find_elements(By.CSS_SELECTOR, 'button')[1]
         self.actions.move_to_element(button)
-        self.random_time_sleep_big()
+        self.random_time_sleep_fast()
         self.actions.click().perform()
-        self.random_time_sleep_big()
+        self.random_time_sleep_fast()
 
 
     def move_to_and_click_static_class(self, static_element):
         parent = self.browser.find_element(By.CLASS_NAME, static_element)
         button = parent.find_element(By.CSS_SELECTOR, 'button')
         self.actions.move_to_element(button)
-        self.random_time_sleep_big()
+        self.random_time_sleep_fast()
         self.actions.click().perform()
-        self.random_time_sleep_big()
+        self.random_time_sleep_fast()
 
     def move_to_and_click_static_class_3_button(self, static_element):
         total_scroll = int(random.randint(70, 150))
@@ -326,7 +368,7 @@ class SettingAccount(StartLoginQuit):
             # Ищем кнопку save и жмем
             self.actions.move_to_element(button)
             self.actions.click().perform()
-            self.random_time_sleep_large()
+            self.random_time_sleep_fast()
 
         except Exception as e:
             print(f'Account{self.count}: [-] Не удалось нажать на ТРЕТЬЮ кнопку в элменте')
@@ -352,7 +394,7 @@ class SettingAccount(StartLoginQuit):
             # Ищем кнопку save и жмем
             self.actions.move_to_element(button)
             self.actions.click().perform()
-            self.random_time_sleep_large()
+            self.random_time_sleep_fast()
 
         except Exception as e:
             print(f'Account{self.count}: [-] Не удалось нажать на ВТОРУЮ кнопку в элменте')

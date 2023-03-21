@@ -73,7 +73,7 @@ window_size = [
 # Fifteen_acc = int(f'{random.randrange(345, 360)}')
 
 #aggressiv
-first_acc = int(f'{random.randrange(1, 3)}')
+first_acc = int(f'{random.randrange(5, 10)}')
 second_acc = int(f'{random.randrange(10, 20)}')
 third_acc = int(f'{random.randrange(30, 40)}')
 fourth_acc = int(f'{random.randrange(50, 60)}')

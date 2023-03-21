@@ -57,7 +57,7 @@ window_size = [
 ]                               # 11
 
 # Читаем данные из таблицы
-df = pd.read_csv('/home/ivan/Загрузки/accs_17march.csv')
+df = pd.read_csv('/home/ivan/Загрузки/20_march.csv')
 
 user_setting_dict = {}
 for i, row in df.iterrows():

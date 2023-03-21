@@ -16,9 +16,9 @@ class Mass:  # Класс для массовых действий
     @staticmethod
     def start_mass_like(i):  # start for script # Старт основого скрипта
         my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/BigBoobsGW'
-        sub_name = 'BigBoobsGW'
-        post_title_like = "short but oh so sweet 🥹"
+        url = 'https://www.reddit.com/r/Nudes'
+        sub_name = 'Nudes'
+        post_title_like = "Would I make a good Stepmom? 🤭"
 
         try:
             my_like.start_browser()

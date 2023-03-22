@@ -1,5 +1,4 @@
 from selenium.common import NoSuchElementException
-from selenium.webdriver import ActionChains
 from v40_like import UpVote
 from selenium.webdriver.common.by import By
 from multiprocessing import Pool
@@ -22,7 +21,7 @@ class Walker(UpVote):
 
     def switching_display_post(self):
         try:
-            self.random_time_sleep_large()
+            self.random_time_sleep_big()
             self.browser.refresh()
             self.move_to_and_click_static_css(self.open_menu_switch)
             self.browser.execute_script("document.body.style.zoom = '100%'")
@@ -41,18 +40,41 @@ class Walker(UpVote):
             self.random_time_for_scroll()
 
     def search_random_post(self):
-
+        # Определяем элемент на странице
         elements = self.browser.find_elements(By.CSS_SELECTOR, "[class^='_1oQyIsiPHYt6nx7VOmd1sz']")
-        last_27_elements = elements[-27:]
-        random_element = random.choice(last_27_elements)
+        element = elements[-1]
 
+        # Если пост виден, открываем его
+        if element.is_displayed():
+            self.move_and_click_element_ls(element)
 
-        for element in elements:
-            if element.is_displayed():
-                self.move_and_click_element_ls(element)
-                break
+        # Цикл пролистывающий до нужного поста
+        else:
+            while not element.is_displayed():
+                self.browser.execute_script(f"window.scrollBy(0, {self.random_step});")
+                self.random_time_for_scroll()
+            self.search_random_post()
+            return
+
         self.random_time_sleep_large()
 
+    def open_authors_page(self):
+        # self.browser.get('https://www.reddit.com/r/smallboobs/comments/11y2y1u/would_these_tiny_nipples_still_turn_you_on/')
+        current_url = self.browser.current_url
+        post_id = current_url.split('/')[-3]
+        author_link = f'//*[@id="UserInfoTooltip--t3_{post_id}--lightbox"]'
+        print(f'Account{self.count}: {author_link}')
+        # time.sleep(30)
+
+        # //*[@id="UserInfoTooltip--t3_11yjsq0"]
+        # //*[@id="UserInfoTooltip--t3_11yjsq0--lightbox"]
+        try:
+            self.move_and_click_xpath(author_link)
+            print(f'Account{self.count}: [+] Перешел в профиль автора')
+        except NoSuchElementException:
+            print(f'Account{self.count}: [-] НЕ смог перейти в профиль автора')
+
+        self.random_time_sleep_large()
 
     @staticmethod
     def start_test_walker(i):
@@ -62,6 +84,7 @@ class Walker(UpVote):
             bot.switching_display_post()
             bot.scroll_page()
             bot.search_random_post()
+            bot.open_authors_page()
             bot.close_browser()
         except Exception as e:
             bot.close_browser()

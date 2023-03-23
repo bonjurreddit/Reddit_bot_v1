@@ -1,4 +1,4 @@
-from v40_settings import SettingBrowserClass
+from v40_settings_for_linux import SettingBrowserClass
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from Data.data import user_setting_dict

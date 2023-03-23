@@ -1,6 +1,6 @@
 import random
 
-from v40_settings import SettingBrowserClass
+from v40_settings_for_linux import SettingBrowserClass
 from v40_start_for_server import StartLoginQuit
 from v40_setting_account import SettingAccount
 from v40_like import UpVote

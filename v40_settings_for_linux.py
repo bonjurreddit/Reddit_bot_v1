@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from Data.data import user_setting_dict
 import zipfile
+import os
 
 
 class SettingBrowserClass:
@@ -78,7 +79,7 @@ class SettingBrowserClass:
 
             # Настройки прокси
             if use_proxy:
-                pluginfile = f'proxy_auth_plugin{self.count}.zip'  # Переменная для создания архива хранящего прокси
+                pluginfile = f"{os.path.expanduser('~')}/PycharmProjects/Reddit_Up_Vote_v1/Proxy/proxy_auth_plugin{self.count}.zip"  # Переменная для создания архива хранящего прокси
 
                 with zipfile.ZipFile(pluginfile, 'w') as zp:
                     zp.writestr("manifest.json", manifest_json)

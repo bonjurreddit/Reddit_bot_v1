@@ -113,7 +113,6 @@ class UpVote(SettingAccount):
             self.search_post_with_title_name(post_title)
             return
 
-
         try:
             # self.random_time_sleep_fast()
             # # Аккуратно подводим к посту

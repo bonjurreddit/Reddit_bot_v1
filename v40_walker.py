@@ -14,7 +14,6 @@ class Walker(UpVote):
         self.random_step = int(random.randint(81, 158))
         self.random_scroll_time = int(random.randint(60, 80))
         self.start_time = time.time()
-        ффффффф
 
         # Элементы гулялки
         self.open_menu_switch = '#view--layout--FUE'

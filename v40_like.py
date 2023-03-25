@@ -111,6 +111,7 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [+] Пост появился на странице')
         except Exception:
             self.browser.execute_script(f"window.scrollBy(0, {random_step});")
+            self.random_time_for_scroll()
             self.search_post_with_title_name(post_title)
             return
 

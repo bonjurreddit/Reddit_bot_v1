@@ -54,7 +54,7 @@ class Mass:  # Класс для массовых действий
             print(f'Проблемы с масс.ДИЗлайкингом: {e}')
 
     @staticmethod
-    def start_test_walker(i):
+    def start_mass_walker(i):
         bot = Walker(i)
         start_time = time.time()
         try:
@@ -214,12 +214,9 @@ def main():
 
         if start_question == '7':
             # Список диапазонов аккаунтов
-            ranges = []
-            for i in range(7):
-                print(f'Диапазон {i+1}')
-                start = int(input('С какого аккаунта стартуем? (Напиши цифру): '))
-                end = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1
-                ranges.append((start, end))
+            ranges = [(1, 15), (16, 30), (46, 60), (61, 75), (76, 90), (91, 102)]
+            random.shuffle(ranges)
+            print(ranges)
 
             for start, end in ranges:
                 number_of_active_profiles = end - start + 1
@@ -244,14 +241,14 @@ def main():
             # Список диапазонов аккаунтов
             ranges = [(1, 15), (16, 30), (46, 60), (61, 75), (76, 90), (91, 102)]
             random.shuffle(ranges)
-
+            print(ranges)
             for start, end in ranges:
                 number_of_active_profiles = end - start + 1
                 loading_profile_data = [i for i in range(start, end)]
 
                 if loading_profile_data is not None:
                     with Pool(number_of_active_profiles) as p:
-                        p.map(Mass.start_mass_like, loading_profile_data)
+                        p.map(Mass.start_mass_walker, loading_profile_data)
 
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')

@@ -4,7 +4,6 @@ from Data.data import user_setting_dict
 import zipfile
 
 
-
 class SettingBrowserClass:
 
     def __init__(self, count):
@@ -90,7 +89,7 @@ class SettingBrowserClass:
             if user_agent:
                 options.add_argument(f'user-agent={self.user_agent}')  # Юзер агент
                 options.add_argument(f"--window-size={self.window_size_setting}")  # Размер окна
-                options.add_experimental_option("excludeSwitches", ['enable-automation'])  # Отключение панели с "Работает тестовое ПО"
+                options.add_experimental_option("excludeSwitches", ['enable-automation'])   # Отключение панели с "Работает тестовое ПО"
                 options.add_argument("--oobe-timezone-override-for-tests")
                 options.add_argument(
                     "--disable-blink-features=AutomationControlled")  # Отключение видимости WevDriver

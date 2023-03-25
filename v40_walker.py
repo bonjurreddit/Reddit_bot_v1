@@ -10,12 +10,10 @@ class Walker(UpVote):
     def __init__(self, count):
         super().__init__(count)
         self.random_step = int(random.randint(81, 158))
-        self.random_scroll_time = int(random.randint(60, 80))
         self.start_time = time.time()
 
         # Тайминги
         self.scroll_time = int(180)
-
 
         # Элементы гулялки
         self.open_menu_switch = '#view--layout--FUE'
@@ -121,6 +119,7 @@ class Walker(UpVote):
         self.up_vote_random()
         self.save_or_share_or_pass()
         self.browser.back()
+        self.browser.back()
 
     def script_like_post_and_open_author(self):
         self.up_vote_random()
@@ -128,12 +127,14 @@ class Walker(UpVote):
         self.random_follow_author()
         if random.random() < 0.5:
             self.browser.back()
+            self.browser.back()
             self.browser.refresh()
 
     def script_open_author(self):
         self.open_authors_page()
         self.random_follow_author()
         if random.random() < 0.5:
+            self.browser.back()
             self.browser.back()
             self.browser.refresh()
 
@@ -144,4 +145,3 @@ class Walker(UpVote):
     def scrolling_and_open_post(self):
         self.scroll_page()
         self.search_random_post()
-

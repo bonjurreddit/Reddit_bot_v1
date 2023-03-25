@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from Data.data import user_setting_dict
 import zipfile
-import os
+
 
 
 class SettingBrowserClass:

@@ -1,11 +1,12 @@
 import random
-
 from v40_settings_for_linux import SettingBrowserClass
 from v40_start_for_server import StartLoginQuit
 from v40_setting_account import SettingAccount
 from v40_like import UpVote
+from v40_walker import Walker
 from Data.data import user_setting_dict
 from multiprocessing import Pool
+import datetime
 import time
 
 
@@ -28,6 +29,7 @@ class Mass:  # Класс для массовых действий
             my_like.search_post_with_title_name(post_title_like)
             my_like.up_vote_random()
             my_like.save_or_share_or_pass()
+            my_like.random_follow_author()
             my_like.close_browser()
 
         except Exception as e:
@@ -52,6 +54,31 @@ class Mass:  # Класс для массовых действий
             print(f'Проблемы с масс.ДИЗлайкингом: {e}')
 
     @staticmethod
+    def start_test_walker(i):
+        bot = Walker(i)
+        start_time = time.time()
+        try:
+            bot.walking_start()
+            while time.time() - start_time < 900:
+                random_num = random.random()
+                bot.scrolling_and_open_post()
+
+                if random_num < 0.15:
+                    bot.script_like_post_and_save()
+                if 0.15 < random_num < 0.5:
+                    bot.close_post()
+                if 0.5 < random_num < 0.85:
+                    bot.script_open_author()
+                if 0.85 < random_num < 1:
+                    bot.script_like_post_and_open_author()
+
+            print(f"Account{bot.count}: {datetime.datetime.now()}:: [+]  Закончил гулять!")
+            bot.close_browser()
+        except Exception as e:
+            bot.close_browser()
+            print(f"Account{bot.count}: {datetime.datetime.now()}: [-]  Вылетел с прогули")
+
+    @staticmethod
     def start_mass_random_like(i):  # start for script # Старт основого скрипта
         my_like = UpVote(i)
         url = 'https://www.reddit.com/r/IRLgirls'
@@ -72,7 +99,6 @@ class Mass:  # Класс для массовых действий
         except Exception as e:
             my_like.start_menu()
             print(f'Проблемы с масс.лайкингом: {e}')
-
 
     @staticmethod   # Старт основого скрипта
     def start_mass_setting_account(i):  # start for script
@@ -116,9 +142,6 @@ class Mass:  # Класс для массовых действий
         except Exception as e:
             print(f'Проблемы с чекером: {e}')
 
-
-
-
     @staticmethod   # Старт проверки настроек драйвера
     def test_driver_settings(i):
         try:
@@ -133,7 +156,7 @@ class Mass:  # Класс для массовых действий
 
 def main():
     try:  # Переменные для пула
-        print('Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \n 8. Дизлайк в один диапазон')
+        print('Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \n 8. Дизлайк в один диапазон \n 9. Гулялка(15-20 минут)')
         start_question = input("Сделай выбор и напиши цифру(без точки): ")
 
         if start_question == '1':
@@ -217,7 +240,18 @@ def main():
                 with Pool(number_of_active_profiles) as p:  # МУЛЬТИПРОЦЕССИНГ
                     p.map(Mass.start_mass_dislike, loading_profile_data)
 
+        if start_question == '9':
+            # Список диапазонов аккаунтов
+            ranges = [(1, 15), (16, 30), (46, 60), (61, 75), (76, 90), (91, 102)]
+            random.shuffle(ranges)
 
+            for start, end in ranges:
+                number_of_active_profiles = end - start + 1
+                loading_profile_data = [i for i in range(start, end)]
+
+                if loading_profile_data is not None:
+                    with Pool(number_of_active_profiles) as p:
+                        p.map(Mass.start_mass_like, loading_profile_data)
 
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')
@@ -226,8 +260,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-# Написать функцию запуска пачек аккаунтов
-# Пересчитать и правльно расределить время лайка
-# Нвписать вариацию для запуска одного аккаунта
-# Написать чекер

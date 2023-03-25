@@ -20,6 +20,7 @@ class UpVote(SettingAccount):
         self.block_with_up_vote_top = '#overlayScrollContainer'
         self.block_with_up_vote_side = '#overlayScrollContainer > div._1npCwF50X2J7Wt82SZi6J0 > div.u35lf2ynn4jHsVUwPmNU.Dx3UxiK86VcfkFQVHNXNi > div.uI_hDmU5GSiudtABRz_37'
         self.reserve_down_vote = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2udhMC-jldHp_EpAuBeSR1.PaJBYLqPf_Gie2aZntVQ7._2OVNlZuUd8L9v0yVECZ2iA > div.uI_hDmU5GSiudtABRz_37'
+        self.btn_follow = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._3Kd8DQpBIbsr5E1JcrMFTY._1tvThPWQpORoc2taKebHxs > div > div._27SH1SRzjtOk_2NB2YC-FR > div > div._3lhzE6Cg3SSeQGIHuLjILb.GQV0F7lQiMOV6EofzopdJ > div:nth-child(1) > button'
 
     def find_communities_use_search(self, sub_name):
         try:
@@ -189,6 +190,25 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [+] Нажал кнопку save...')
         except Exception as e:
             print(f'Account{self.count}: [-] Скорее всего кнопка save скрыта...')
+            print(f'Account{self.count}: {e}')
+
+    def random_follow_author(self):
+        try:
+            # Находим кнопку подписаться
+            follow_btn = self.browser.find_element(By.CSS_SELECTOR, self.btn_follow)
+            # Если уже подписаны, ничего не делаем
+            if follow_btn.text == 'Unfollow':
+                self.random_time_sleep_large()
+                print(f'Account{self.count}: [+] Уже подписан на этого автора')
+            # Если не подписаны, подписываемся с рандомом
+            if follow_btn.text == 'Follow' and random.random() < 0.5:
+                self.random_time_sleep_fast()
+                self.move_and_click_css(self.btn_follow)
+                self.random_time_sleep_large()
+                print(f'Account{self.count}: [+] Подписалс на автора')
+
+        except Exception as e:
+            print(f'Account{self.count}: [-] Возникли проблемы с подпиской на автора')
             print(f'Account{self.count}: {e}')
 
     def up_vote_random(self):

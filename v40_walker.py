@@ -1,8 +1,6 @@
 from selenium.common import NoSuchElementException
 from v40_like import UpVote
 from selenium.webdriver.common.by import By
-from multiprocessing import Pool
-import datetime
 import time
 import random
 
@@ -15,11 +13,14 @@ class Walker(UpVote):
         self.random_scroll_time = int(random.randint(60, 80))
         self.start_time = time.time()
 
+        # Тайминги
+        self.scroll_time = int(180)
+
+
         # Элементы гулялки
         self.open_menu_switch = '#view--layout--FUE'
         self.content_menu = 'body > div:nth-child(65) > div'
         self.block_close_post_class = '_25ONQRwoX20oeRXFl_FZXt'
-        self.btn_follow = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._3Kd8DQpBIbsr5E1JcrMFTY._1tvThPWQpORoc2taKebHxs > div > div._27SH1SRzjtOk_2NB2YC-FR > div > div._3lhzE6Cg3SSeQGIHuLjILb.GQV0F7lQiMOV6EofzopdJ > div:nth-child(1) > button'
         self.random_post = "[class^='_1oQyIsiPHYt6nx7VOmd1sz']"
 
     def switching_display_post_card(self):
@@ -66,7 +67,7 @@ class Walker(UpVote):
 
     def scroll_page(self):
 
-        while time.time() - self.start_time < 100:
+        while time.time() - self.start_time < self.scroll_time:
             self.browser.execute_script(f"window.scrollBy(0, {self.random_step});")
             self.random_time_for_scroll()
 
@@ -110,25 +111,6 @@ class Walker(UpVote):
         except NoSuchElementException:
             print(f'Account{self.count}: [-] НЕ смог закрыть пост')
 
-    def random_follow_author(self):
-        try:
-            # Находим кнопку подписаться
-            follow_btn = self.browser.find_element(By.CSS_SELECTOR, self.btn_follow)
-            # Если уже подписаны, ничего не делаем
-            if follow_btn.text == 'Unfollow':
-                self.random_time_sleep_large()
-                print(f'Account{self.count}: [+] Уже подписан на этого автора')
-            # Если не подписаны, подписываемся с рандомом
-            if follow_btn.text == 'Follow' and random.random() < 0.5:
-                self.random_time_sleep_fast()
-                self.move_and_click_css(self.btn_follow)
-                self.random_time_sleep_large()
-                print(f'Account{self.count}: [+] Подписалс на автора')
-
-        except Exception as e:
-            print(f'Account{self.count}: [-] Возникли проблемы с подпиской на автора')
-            print(f'Account{self.count}: {e}')
-
     def switching_display_post(self):
         if random.random() < 0.5:
             self.switching_display_post_card()
@@ -163,43 +145,3 @@ class Walker(UpVote):
         self.scroll_page()
         self.search_random_post()
 
-
-
-    @staticmethod
-    def start_test_walker(i):
-        bot = Walker(i)
-        start_time = time.time()
-
-        try:
-            bot.walking_start()
-            while time.time() - start_time < 360:
-                random_num = random.random()
-                bot.scrolling_and_open_post()
-
-                if random_num < 0.15:
-                    bot.script_like_post_and_save()
-                if 0.15 < random_num < 0.5:
-                    bot.close_post()
-                if 0.5 < random_num < 0.85:
-                    bot.script_open_author()
-                if 0.85 < random_num < 1:
-                    bot.script_like_post_and_open_author()
-
-            print(f"Account{bot.count}: {datetime.datetime.now()}:: [+]  Закончил гулять!")
-            bot.close_browser()
-        except Exception as e:
-            bot.close_browser()
-            print(f"Account{bot.count}: {datetime.datetime.now()}: [-]  Вылетел с прогули")
-
-
-def main():
-    try:
-        with Pool(2) as p:  # МУЛЬТИПРОЦЕССИНГ
-            p.map(Walker.start_test_walker, [1, 2])
-
-    except Exception as e:
-        print(f'Проблемы с мультипроцессингом: {e}')
-
-
-if __name__ == '__main__':
-    main()

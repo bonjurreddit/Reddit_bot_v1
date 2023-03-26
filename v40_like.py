@@ -1,6 +1,5 @@
 from v40_setting_account import SettingAccount
 from selenium.webdriver.common.by import By
-from selenium.common import NoSuchElementException
 import random
 
 
@@ -9,6 +8,7 @@ class UpVote(SettingAccount):
     def __init__(self, count):
         super().__init__(count)
         self.calls_count = 0
+        self.random_number_for_save = random.random()
 
         # Элементы Реддит
         self.search_reddit = '#header-search-bar'
@@ -209,8 +209,9 @@ class UpVote(SettingAccount):
                 self.random_time_sleep_large()
                 print(f'Account{self.count}: [+] Подписалс на автора')
 
-        except NoSuchElementException:
-            print(f'Account{self.count}: [-] Возникли проблемы с подпиской на автора (Не найден элемент)')
+        except Exception as e:
+            print(f'Account{self.count}: [-] Возникли проблемы с подпиской на автора')
+            print(f'Account{self.count}: {e}')
 
     def up_vote_random(self):
         if random.random() < 0.5:
@@ -228,7 +229,7 @@ class UpVote(SettingAccount):
             self.down_vote_reserve()
 
     def save_or_share_or_pass(self):
-        if random.random() < 0.5:
+        if self.random_number_for_save < 0.5:
             self.click_save()
         else:
             pass
@@ -239,6 +240,3 @@ class UpVote(SettingAccount):
         else:
             self.open_communities_url(url)
 
-
-# Функция лайка 1-2х случайных постов
-# Определит как делать рандом между аккаунтами, по способам поиска саба и лайкинга

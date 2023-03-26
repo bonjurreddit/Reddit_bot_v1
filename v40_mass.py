@@ -16,10 +16,10 @@ class Mass:  # Класс для массовых действий
         pass
     @staticmethod
     def start_mass_like(i):  # start for script # Старт основого скрипта
-        my_like = UpVote(i)
-        url = 'https://www.reddit.com/r/Nudes'
-        sub_name = 'Nudes'
-        post_title_like = "Would I make a good Stepmom? 🤭"
+        my_like = Walker(i)
+        url = 'https://www.reddit.com/r/DadWouldBeProud'
+        sub_name = 'DadWouldBeProud'
+        post_title_like = "I'm so playful today"
 
         try:
             my_like.start_browser()
@@ -29,7 +29,7 @@ class Mass:  # Класс для массовых действий
             my_like.search_post_with_title_name(post_title_like)
             my_like.up_vote_random()
             my_like.save_or_share_or_pass()
-            my_like.random_follow_author()
+            my_like.script_open_author()
             my_like.close_browser()
 
         except Exception as e:

@@ -1,5 +1,6 @@
 from v40_setting_account import SettingAccount
 from selenium.webdriver.common.by import By
+from selenium.common import NoSuchElementException
 import random
 
 
@@ -208,9 +209,8 @@ class UpVote(SettingAccount):
                 self.random_time_sleep_large()
                 print(f'Account{self.count}: [+] Подписалс на автора')
 
-        except Exception as e:
-            print(f'Account{self.count}: [-] Возникли проблемы с подпиской на автора')
-            print(f'Account{self.count}: {e}')
+        except NoSuchElementException:
+            print(f'Account{self.count}: [-] Возникли проблемы с подпиской на автора (Не найден элемент)')
 
     def up_vote_random(self):
         if random.random() < 0.5:

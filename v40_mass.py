@@ -1,9 +1,10 @@
 import random
-from v40_settings_for_linux import SettingBrowserClass
+from v_40_settings_for_server import SettingBrowserClass
 from v40_start_for_server import StartLoginQuit
 from v40_setting_account import SettingAccount
 from v40_like import UpVote
 from v40_walker import Walker
+from v40_smart_bot import SmartBot
 from Data.data import user_setting_dict
 from multiprocessing import Pool
 import datetime
@@ -14,6 +15,31 @@ class Mass:  # Класс для массовых действий
 
     def __init__(self):
         pass
+
+    @staticmethod
+    def start_smart_top(i):
+        my_bot = SmartBot(i)
+
+        url = 'https://www.reddit.com/r/smallboobs'
+        sub_name = 'smallboobs'
+        post_title_like = "What my colleagues don't get to see"
+
+        try:
+            my_bot.start_browser()
+            my_bot.open_communities_url(url)
+            my_bot.random_subscribe()
+            my_bot.start_sub_scroll()
+            my_bot.check_post_in_page(post_title_like)
+
+            if my_bot.flag_check_post == 1:
+                my_bot.tab_top_script(url, post_title_like)
+            else:
+                my_bot.tab_new_script(sub_name, post_title_like)
+
+        except Exception as e:
+            my_bot.close_browser()
+            print(f'Account{my_bot.count}({my_bot.username}: {datetime.datetime.now()}): [-] ПРОБЛЕМЫ! ВЫЛЕТЕЛ ПО ПРИЧИНЕ: {e}')
+
     @staticmethod
     def start_mass_like(i):  # start for script # Старт основого скрипта
         my_like = Walker(i)
@@ -77,6 +103,28 @@ class Mass:  # Класс для массовых действий
         except Exception as e:
             bot.close_browser()
             print(f"Account{bot.count}: {datetime.datetime.now()}: [-]  Вылетел с прогули")
+
+    @staticmethod
+    def start_mass_check_like_account(i):
+        my_bot = SmartBot(i)
+
+        url = 'https://www.reddit.com/r/smallboobs'
+        sub_name = 'smallboobs'
+        post_title_like = "They’re small but they’re bouncy 😆"
+
+        try:
+            my_bot.start_browser()
+            my_bot.open_communities_url(url)
+            my_bot.tab_new(sub_name)
+            my_bot.search_post_with_title_name(post_title_like)
+            my_bot.get_post_url()
+            my_bot.check_like()
+            my_bot.close_browser()
+
+        except Exception as e:
+            my_bot.close_browser()
+            print(f"Account{my_bot.count}: {datetime.datetime.now()}: [-]  Ошибка чекера лайков")
+            print({e})
 
     @staticmethod
     def start_mass_random_like(i):  # start for script # Старт основого скрипта
@@ -249,6 +297,31 @@ def main():
                 if loading_profile_data is not None:
                     with Pool(number_of_active_profiles) as p:
                         p.map(Mass.start_mass_walker, loading_profile_data)
+
+        if start_question == '10':
+            # Список диапазонов аккаунтов
+            ranges = [(1, 16), (16, 31), (46, 61), (61, 76), (76, 91), (91, 103)]
+            random.shuffle(ranges)
+            print(ranges)
+
+            for start, end in ranges:
+                number_of_active_profiles = end - start + 1
+                loading_profile_data = [i for i in range(start, end)]
+
+                if loading_profile_data is not None:
+                    with Pool(number_of_active_profiles) as p:
+                        p.map(Mass.start_smart_top, loading_profile_data)
+
+        if start_question == '11':
+            min_num_account = int(input('Введи диапазон аккаунтов, для лайкинга! \n С какого аккаунта стартуем? (Напиши цифру): '))
+            max_num_account = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1
+            number_of_active_profiles = int(max_num_account - min_num_account)
+
+            loading_profile_data = [i for i in range(min_num_account, max_num_account)]  # Генерация списка аккаунтов
+
+            if loading_profile_data is not None:
+                with Pool(number_of_active_profiles) as p:  # МУЛЬТИПРОЦЕССИНГ
+                    p.map(Mass.start_mass_check_like_account, loading_profile_data)
 
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')

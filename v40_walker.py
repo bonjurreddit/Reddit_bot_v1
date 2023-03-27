@@ -17,7 +17,7 @@ class Walker(UpVote):
 
         # Элементы гулялки
         self.open_menu_switch = '#view--layout--FUE'
-        self.content_menu = 'body > div:nth-child(65) > div'
+        self.content_menu = 'body > div:nth-child(121)'
         self.block_close_post_class = '_25ONQRwoX20oeRXFl_FZXt'
         self.random_post = "[class^='_1oQyIsiPHYt6nx7VOmd1sz']"
 
@@ -52,7 +52,7 @@ class Walker(UpVote):
 
             # Открываем выпадающий список и обновляем элементы в DOM
             self.move_to_and_click_static_css(self.open_menu_switch)
-            self.browser.execute_script("document.body.style.zoom = '100%'")
+            self.browser.execute_script("location.reload(true)")
             self.random_time_sleep_large()
 
             # Жмем на кнопку переключения

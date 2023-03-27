@@ -1,5 +1,6 @@
 from v40_setting_account import SettingAccount
 from selenium.webdriver.common.by import By
+from selenium.common import NoSuchElementException
 import random
 
 
@@ -22,6 +23,7 @@ class UpVote(SettingAccount):
         self.block_with_up_vote_side = '#overlayScrollContainer > div._1npCwF50X2J7Wt82SZi6J0 > div.u35lf2ynn4jHsVUwPmNU.Dx3UxiK86VcfkFQVHNXNi > div.uI_hDmU5GSiudtABRz_37'
         self.reserve_down_vote = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2udhMC-jldHp_EpAuBeSR1.PaJBYLqPf_Gie2aZntVQ7._2OVNlZuUd8L9v0yVECZ2iA > div.uI_hDmU5GSiudtABRz_37'
         self.btn_follow = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._3Kd8DQpBIbsr5E1JcrMFTY._1tvThPWQpORoc2taKebHxs > div > div._27SH1SRzjtOk_2NB2YC-FR > div > div._3lhzE6Cg3SSeQGIHuLjILb.GQV0F7lQiMOV6EofzopdJ > div:nth-child(1) > button'
+        self.block_with_up_vote_in_post = '_23h0-EcaBUorIHC-JZyh6J'
 
     def find_communities_use_search(self, sub_name):
         try:
@@ -132,25 +134,58 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [-] НЕ удалось открыть пост!')
             print(f'Account{self.count}: {e}')
 
+    def search_post_with_title_name_not_open(self, post_title):
+
+        # Счетчик на выход из бесконечного цикла, в случае ошибки
+        self.calls_count += 1
+        if self.calls_count >= 300:
+            print(f'Account{self.count}: [-] Не смог найти пост')
+            self.close_browser()
+            self.calls_count = 0
+
+        # Перменные для поиска
+        random_num = int(random.randint(100, 200))
+        random_step = int(random.randint(81, 158))
+
+        # Если поста не видно на странице, прокручиваем страницу до отображения поста
+        try:
+            scroll = self.browser.find_element(By.PARTIAL_LINK_TEXT, post_title)
+            print(f'Account{self.count}: [+] Пост появился на странице')
+        except Exception:
+            self.browser.execute_script(f"window.scrollBy(0, {random_step});")
+            self.random_time_for_scroll()
+            self.search_post_with_title_name_not_open(post_title)
+            return
+
     def up_vote_through_post_top(self):
         try:
             self.random_time_sleep_fast()
             self.move_to_and_click_static_css(self.block_with_up_vote_top)
-            self.random_time_sleep_large()
+            self.random_time_sleep_fast()
             print(f'Account{self.count}: [+] Поставил лайк через ТОП!')
 
         except Exception as e:
             print(f'Account{self.count}: [-] НЕ ппоставил лайк через ТОП')
-            print(f'Account{self.count}: {e}')
+            self.up_vote_in_post()
 
     def up_vote_through_side(self):
         try:
             self.random_time_sleep_fast()
             self.move_to_and_click_static_css(self.block_with_up_vote_side)
-            self.random_time_sleep_large()
+            self.random_time_sleep_fast()
             print(f'Account{self.count}: [+] Поставил лайк через боковую панель!')
         except Exception as e:
             print(f'Account{self.count}: [-] НЕ поставил лайк через боковую панель')
+            self.up_vote_in_post()
+
+    def up_vote_in_post(self):
+        try:
+            self.random_time_sleep_fast()
+            self.move_to_and_click_static_class(self.block_with_up_vote_in_post)
+            self.random_time_sleep_fast()
+            print(f'Account{self.count}: [+] Поставил лайк внутри поста')
+        except Exception as e:
+            print(f'Account{self.count}: [-] НЕ поставил лайк внутри поста')
             print(f'Account{self.count}: {e}')
 
     def down_vote_through_post_top(self):
@@ -162,7 +197,7 @@ class UpVote(SettingAccount):
 
         except Exception as e:
             print(f'Account{self.count}: [-] НЕ подписался дизлайк через ТОП')
-            print(f'Account{self.count}: {e}')
+            self.down_vote_reserve()
 
     def down_vote_through_side(self):
         try:
@@ -172,17 +207,17 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [+] Поставил ДИЗлайк через боковую панель!')
         except Exception as e:
             print(f'Account{self.count}: [-] НЕ поставил ДИЗлайк через боковую панель')
-            print(f'Account{self.count}: {e}')
+            self.down_vote_reserve()
 
     def down_vote_reserve(self):
         try:
             self.random_time_sleep_fast()
-            self.move_to_and_click_second_static_css(self.reserve_down_vote)
+            self.move_to_and_click_second_static_class(self.block_with_up_vote_in_post)
             self.random_time_sleep_large()
             print(f'Account{self.count}: [+] Поставил ДИЗлайк через резерв!')
         except Exception as e:
             print(f'Account{self.count}: [-] НЕ поставил ДИЗлайк через резерв')
-            print(f'Account{self.count}: {e}')
+
 
     def click_save(self):
         try:
@@ -192,7 +227,7 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [+] Нажал кнопку save...')
         except Exception as e:
             print(f'Account{self.count}: [-] Скорее всего кнопка save скрыта...')
-            print(f'Account{self.count}: {e}')
+
 
     def random_follow_author(self):
         try:
@@ -211,7 +246,7 @@ class UpVote(SettingAccount):
 
         except Exception as e:
             print(f'Account{self.count}: [-] Возникли проблемы с подпиской на автора')
-            print(f'Account{self.count}: {e}')
+
 
     def up_vote_random(self):
         if random.random() < 0.5:
@@ -220,13 +255,12 @@ class UpVote(SettingAccount):
             self.up_vote_through_side()
 
     def down_vote_random(self):
-        try:
-            if random.random() < 0.5:
-                self.down_vote_through_post_top()
-            else:
-                self.down_vote_through_side()
-        except:
-            self.down_vote_reserve()
+        if random.random() < 0.5:
+            self.down_vote_through_post_top()
+        else:
+            self.down_vote_through_side()
+
+
 
     def save_or_share_or_pass(self):
         if self.random_number_for_save < 0.5:

@@ -348,6 +348,16 @@ class SettingAccount(StartLoginQuit):
         self.actions.click().perform()
         self.random_time_sleep_fast()
 
+    def move_to_and_click_second_static_class(self, static_element):
+        parent = self.browser.find_element(By.CLASS_NAME, static_element)
+        print(parent)
+        button = parent.find_elements(By.CSS_SELECTOR, 'button')[1]
+        print(button)
+        self.actions.move_to_element(button)
+        self.random_time_sleep_fast()
+        self.actions.click().perform()
+        self.random_time_sleep_fast()
+
     def move_to_and_click_static_class_3_button(self, static_element):
         total_scroll = int(random.randint(70, 150))
         num_steps = int(random.randint(1, 3))

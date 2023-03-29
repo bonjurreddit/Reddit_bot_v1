@@ -507,8 +507,9 @@ class SettingAccount(StartLoginQuit):
             self.random_time_sleep_fast()
 
             # Switch_nswf
-            self.move_to_and_click_static_css(self.switch_nsfw)
-            print(f'Account{self.count}: [+] Переключил NSFW')
+            if random.random() < 0.5:
+                self.move_to_and_click_static_css(self.switch_nsfw)
+                print(f'Account{self.count}: [+] Переключил NSFW')
 
             # Всплывающее окно с подтверждением действий
             try:
@@ -538,15 +539,16 @@ class SettingAccount(StartLoginQuit):
                 print(f'Account{self.count}: [-] Не удалось переключить Safe_browser_mode')
 
             # Safe_search отключить
-            try:
-                self.browser.get('https://www.reddit.com/search/?q=')
-                self.move_to_and_click_static_css(self.btn_safe_search)
-                print(f'Account{self.count}: [+] Переключил Safe_Search')
-            except Exception:
-                print(f'Account{self.count}: [-] Не удалось переключить Safe_Search')
+            if random.random() > 0.5:
+                try:
+                    self.browser.get('https://www.reddit.com/search/?q=')
+                    self.move_to_and_click_static_css(self.btn_safe_search)
+                    print(f'Account{self.count}: [+] Переключил Safe_Search')
+                except Exception:
+                    print(f'Account{self.count}: [-] Не удалось переключить Safe_Search')
 
             print(f'Account{self.count}: [+] Аккаунт настроен успешно!')
         except Exception as e:
             print(f'Account{self.count}: [-] Настройки акаунта прошли НЕ КОРРЕКТНО')
             print(f'Account{self.count}: {e}')
-            self.start_menu()
+

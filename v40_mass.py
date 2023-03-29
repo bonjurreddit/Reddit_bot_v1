@@ -22,7 +22,7 @@ class Mass:  # Класс для массовых действий
 
         url = 'https://www.reddit.com/r/smallboobs'
         sub_name = 'smallboobs'
-        post_title_like = "What my colleagues don't get to see"
+        post_title_like = "just some mama tits <3"
 
         try:
             my_bot.start_browser()
@@ -204,7 +204,7 @@ class Mass:  # Класс для массовых действий
 
 def main():
     try:  # Переменные для пула
-        print('Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \n 8. Дизлайк в один диапазон \n 9. Гулялка(15-20 минут)')
+        print('Привет, что будем делать?! \n 1. Проверка прокси \n 2. Настройка аккаунтов \n 3. Лайки один диап.  \n 4. Ручное управление аккаунтом  \n 5. Чекер аккаунтов  \n 6. Сканер диапазонов(баги) \n 7. Запуск по цепочке \n 8. Дизлайк в один диапазон \n 9. Гулялка(15-20 минут \n 10. ОТПРАВИТЬ ПУБЛИКАЦИЮ В ТОП! \n 11. Чекер лайков (По диапазонам)')
         start_question = input("Сделай выбор и напиши цифру(без точки): ")
 
         if start_question == '1':
@@ -287,7 +287,7 @@ def main():
 
         if start_question == '9':
             # Список диапазонов аккаунтов
-            ranges = [(1, 15), (16, 30), (46, 60), (61, 75), (76, 90), (91, 102)]
+            ranges = ranges = [(1, 16), (16, 31), (31, 46), (46, 61), (61, 76), (76, 91), (91, 103)]
             random.shuffle(ranges)
             print(ranges)
             for start, end in ranges:
@@ -300,7 +300,7 @@ def main():
 
         if start_question == '10':
             # Список диапазонов аккаунтов
-            ranges = [(1, 16), (16, 31), (46, 61), (61, 76), (76, 91), (91, 103)]
+            ranges = [(1, 16), (16, 31), (31, 46), (46, 61), (61, 76), (76, 91), (91, 103)]
             random.shuffle(ranges)
             print(ranges)
 
@@ -323,6 +323,19 @@ def main():
                 with Pool(number_of_active_profiles) as p:  # МУЛЬТИПРОЦЕССИНГ
                     p.map(Mass.start_mass_check_like_account, loading_profile_data)
 
+        if start_question == '12':
+            # Список диапазонов аккаунтов
+            ranges = [(1, 16), (16, 31), (31, 46), (46, 61), (61, 76), (76, 91), (91, 103)]
+            random.shuffle(ranges)
+            print(ranges)
+
+            for start, end in ranges:
+                number_of_active_profiles = end - start + 1
+                loading_profile_data = [i for i in range(start, end)]
+
+                if loading_profile_data is not None:
+                    with Pool(2) as p:
+                        p.map(Mass.start_smart_top, [1, 2])
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')
 

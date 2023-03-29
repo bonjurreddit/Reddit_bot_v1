@@ -83,8 +83,11 @@ class SmartBot(Walker):
 
         self.browser.switch_to.window(self.browser.window_handles[-1])
         self.browser.refresh()
-        element = self.browser.find_element(By.CSS_SELECTOR, self.count_like)
-        likes_after_like = int(element.text)
+        self.random_time_sleep_fast()
+
+        element2 = self.browser.find_element(By.CSS_SELECTOR, self.count_like)
+        likes_after_like = int(element2.text)
+        self.browser.switch_to.window(self.browser.window_handles[0])
 
         if likes_after_like <= likes_before_like:
             print(f'Account{self.count}: [-] НЕ ЛАЙКАЕТ')
@@ -102,7 +105,7 @@ class SmartBot(Walker):
         self.tab_new(sub_name)
         self.search_post_with_title_name(post_title_like)
         self.get_post_url()
-        self.up_vote_random()
+        self.check_like()
         self.save_or_share_or_pass()
         self.open_authors_page()
         self.random_follow_author()
@@ -117,7 +120,7 @@ class SmartBot(Walker):
         self.search_post_with_title_name(post_title_like)
         self.get_post_id()
         self.get_post_url()
-        self.up_vote_random()
+        self.check_like()
         self.save_or_share_or_pass()
 
         if self.random_number_for_save < 0.5:

@@ -1,14 +1,17 @@
-import random
-import datetime
-from v40_walker import Walker
+from v40_comment import Walker
+from Data.comment import comments
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
+import random
+import datetime
 
 
 class SmartBot(Walker):
 
     def __init__(self, count):
         super().__init__(count)
+
+        self.random_comment = random.choice(list(comments.values()))
         self.post_id = None
         self.flag_check_post = 0
         self.current_url = None
@@ -16,6 +19,10 @@ class SmartBot(Walker):
 
         # Элементы реддит
         self.count_like = 'body > div.side > div:nth-child(2) > div > div.score > span.number'
+        self.comment_container = '#overlayScrollContainer > div._1npCwF50X2J7Wt82SZi6J0 > div.u35lf2ynn4jHsVUwPmNU.Dx3UxiK86VcfkFQVHNXNi > div.uI_hDmU5GSiudtABRz_37 > div._1r4smTyOEZFO91uFIdWW6T.aUM8DQ_Nz5wL0EJc_wte6 > div:nth-child(2) > div > div > div._2baJGEALPiEMZpWB2iWQs7 > div > div:nth-child(1) > div > div > div'
+        self.comment_container_in_open_post = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2udhMC-jldHp_EpAuBeSR1.PaJBYLqPf_Gie2aZntVQ7._2OVNlZuUd8L9v0yVECZ2iA > div.uI_hDmU5GSiudtABRz_37 > div._1r4smTyOEZFO91uFIdWW6T.aUM8DQ_Nz5wL0EJc_wte6 > div:nth-child(2) > div > div > div._2baJGEALPiEMZpWB2iWQs7 > div > div:nth-child(1) > div > div > div'
+        self.comment_send = '#overlayScrollContainer > div._1npCwF50X2J7Wt82SZi6J0 > div.u35lf2ynn4jHsVUwPmNU.Dx3UxiK86VcfkFQVHNXNi > div.uI_hDmU5GSiudtABRz_37 > div._1r4smTyOEZFO91uFIdWW6T.aUM8DQ_Nz5wL0EJc_wte6 > div:nth-child(2) > div > div > div._17TqawK-44tH0psnHPIhzS.RQTXfVRnnTF5ont3w58rx > div._3SNMf5ZJL_5F1qxcZkD0Cp'
+        self.comment_send_in_post = '#AppRouter-main-content > div > div > div._3ozFtOe6WpJEMUtxDOIvtU > div._31N0dvxfpsO6Ur5AKx4O5d > div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2udhMC-jldHp_EpAuBeSR1.PaJBYLqPf_Gie2aZntVQ7._2OVNlZuUd8L9v0yVECZ2iA > div.uI_hDmU5GSiudtABRz_37 > div._1r4smTyOEZFO91uFIdWW6T.aUM8DQ_Nz5wL0EJc_wte6 > div:nth-child(2) > div > div > div._17TqawK-44tH0psnHPIhzS.RQTXfVRnnTF5ont3w58rx > div._3SNMf5ZJL_5F1qxcZkD0Cp'
 
     def smart_dis(self):
         try:
@@ -94,10 +101,30 @@ class SmartBot(Walker):
         else:
             print(f'Account{self.count}: [+] ЛАЙКАЕТ')
 
+    def write_comment(self):
 
+        if random.random() < 0.07:
+            try:
+                try:
+                    scroll = self.browser.find_element(By.CSS_SELECTOR, self.comment_container)
+                    self.enter_word(self.comment_container, self.random_comment)
+                    self.move_to_and_click_static_css(self.comment_send)
+                    print(f'Account{self.count}: [+] Написал комментарий не открывая пост!')
 
+                except NoSuchElementException:
+                    try:
+                        scroll = self.browser.find_element(By.CSS_SELECTOR, self.comment_container_in_open_post)
+                        self.enter_word(self.comment_container_in_open_post, self.random_comment)
+                        self.move_to_and_click_static_css(self.comment_send_in_post)
+                        print(f'Account{self.count}: [-] Написал комментарий открыв пост!')
 
+                    except NoSuchElementException:
+                        self.browser.execute_script(f"window.scrollBy(0, {self.random_step});")
+                        self.random_time_for_scroll()
+                        self.write_comment()
 
+            except Exception as e:
+                print(f'Account{self.count}: [-] Проблемы с комментом {e}')
 
 
     def tab_new_script(self, sub_name, post_title_like):
@@ -121,6 +148,7 @@ class SmartBot(Walker):
         self.get_post_id()
         self.get_post_url()
         self.check_like()
+        self.write_comment()
         self.save_or_share_or_pass()
 
         if self.random_number_for_save < 0.5:

@@ -20,9 +20,9 @@ class Mass:  # Класс для массовых действий
     def start_smart_top(i):
         my_bot = SmartBot(i)
 
-        url = 'https://www.reddit.com/r/smallboobs'
-        sub_name = 'smallboobs'
-        post_title_like = "just some mama tits <3"
+        url = 'https://www.reddit.com/r/SmallCutie'
+        sub_name = 'SmallCutie'
+        post_title_like = "I have a spot for you to cum"
 
         try:
             my_bot.start_browser()
@@ -103,6 +103,28 @@ class Mass:  # Класс для массовых действий
         except Exception as e:
             bot.close_browser()
             print(f"Account{bot.count}: {datetime.datetime.now()}: [-]  Вылетел с прогули")
+
+    @staticmethod
+    def start_mass_comment_test(i):
+        my_bot = SmartBot(i)
+
+        url = 'https://www.reddit.com/r/Nudes'
+        sub_name = 'Nudes'
+        post_title_like = "I don't know what my feet or tits look better."
+
+        try:
+            my_bot.start_browser()
+            my_bot.open_communities_url(url)
+            my_bot.tab_new(sub_name)
+            my_bot.search_post_with_title_name(post_title_like)
+            my_bot.get_post_url()
+            my_bot.write_comment()
+            my_bot.close_browser()
+
+        except Exception as e:
+            my_bot.close_browser()
+            print(f"Account{my_bot.count}: {datetime.datetime.now()}: [-]  Ошибка тест коммента")
+            print({e})
 
     @staticmethod
     def start_mass_check_like_account(i):
@@ -336,6 +358,20 @@ def main():
                 if loading_profile_data is not None:
                     with Pool(2) as p:
                         p.map(Mass.start_smart_top, [1, 2])
+
+        if start_question == '13':
+            # Список диапазонов аккаунтов
+            ranges = [(1, 16), (16, 31), (31, 46), (46, 61), (61, 76), (76, 91), (91, 103)]
+            random.shuffle(ranges)
+            print(ranges)
+
+            for start, end in ranges:
+                number_of_active_profiles = end - start + 1
+                loading_profile_data = [i for i in range(start, end)]
+
+                if loading_profile_data is not None:
+                    with Pool(2) as p:
+                        p.map(Mass.start_mass_comment_test, [1, 2])
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')
 

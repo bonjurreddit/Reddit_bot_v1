@@ -20,9 +20,9 @@ class Mass:  # Класс для массовых действий
     def start_smart_top(i):
         my_bot = SmartBot(i)
 
-        url = 'https://www.reddit.com/r/SmallCutie'
-        sub_name = 'SmallCutie'
-        post_title_like = "I have a spot for you to cum"
+        url = 'https://www.reddit.com/r/Nudes'
+        sub_name = 'Nudes'
+        post_title_like = "Love getting nude in public 😅"
 
         try:
             my_bot.start_browser()
@@ -108,9 +108,9 @@ class Mass:  # Класс для массовых действий
     def start_mass_comment_test(i):
         my_bot = SmartBot(i)
 
-        url = 'https://www.reddit.com/r/Nudes'
-        sub_name = 'Nudes'
-        post_title_like = "I don't know what my feet or tits look better."
+        url = 'https://www.reddit.com/r/DadWouldBeProud'
+        sub_name = 'DadWouldBeProud'
+        post_title_like = "mmm daddy fuck me pleaseee"
 
         try:
             my_bot.start_browser()
@@ -371,7 +371,7 @@ def main():
 
                 if loading_profile_data is not None:
                     with Pool(2) as p:
-                        p.map(Mass.start_mass_comment_test, [1, 2])
+                        p.map(Mass.start_mass_comment_test, [3, 4])
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')
 

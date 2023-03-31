@@ -104,24 +104,25 @@ class SmartBot(Walker):
     def write_comment(self):
 
         if random.random() < 0.07:
+
             try:
                 try:
-                    scroll = self.browser.find_element(By.CSS_SELECTOR, self.comment_container)
+
+                    scroll = self.browser.find_element(By.CSS_SELECTOR, self.comment_send)
                     self.enter_word(self.comment_container, self.random_comment)
+                    self.browser.execute_script("arguments[0].scrollIntoView();", scroll)
+                    self.move_to_and_click_static_css(self.comment_send)
                     self.move_to_and_click_static_css(self.comment_send)
                     print(f'Account{self.count}: [+] Написал комментарий не открывая пост!')
 
                 except NoSuchElementException:
-                    try:
-                        scroll = self.browser.find_element(By.CSS_SELECTOR, self.comment_container_in_open_post)
-                        self.enter_word(self.comment_container_in_open_post, self.random_comment)
-                        self.move_to_and_click_static_css(self.comment_send_in_post)
-                        print(f'Account{self.count}: [-] Написал комментарий открыв пост!')
 
-                    except NoSuchElementException:
-                        self.browser.execute_script(f"window.scrollBy(0, {self.random_step});")
-                        self.random_time_for_scroll()
-                        self.write_comment()
+                    scroll = self.browser.find_element(By.CSS_SELECTOR, self.comment_send_in_post)
+                    self.enter_word(self.comment_container_in_open_post, self.random_comment)
+                    self.browser.execute_script("arguments[0].scrollIntoView();", scroll)
+                    self.move_to_and_click_static_css(self.comment_send_in_post)
+                    self.move_to_and_click_static_css(self.comment_send_in_post)
+                    print(f'Account{self.count}: [+] Написал комментарий открыв пост!')
 
             except Exception as e:
                 print(f'Account{self.count}: [-] Проблемы с комментом {e}')
@@ -144,7 +145,7 @@ class SmartBot(Walker):
     def tab_top_script(self, url, post_title_like):
 
         self.random_time_sleep_big()
-        self.search_post_with_title_name(post_title_like)
+        self.search_post_with_title_name_for_top_script(post_title_like)
         self.get_post_id()
         self.get_post_url()
         self.check_like()

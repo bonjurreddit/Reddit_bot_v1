@@ -73,72 +73,72 @@ window_size = [
 # Fifteen_acc = int(f'{random.randrange(345, 360)}')
 
 #aggressiv
-first_acc = int(f'{random.randrange(5, 10)}')
-second_acc = int(f'{random.randrange(10, 20)}')
-third_acc = int(f'{random.randrange(30, 40)}')
-fourth_acc = int(f'{random.randrange(50, 60)}')
-five_acc = int(f'{random.randrange(70, 80)}')
-six_acc = int(f'{random.randrange(90, 100)}')
-seven_acc = int(f'{random.randrange(110, 120)}')
-eight_acc = int(f'{random.randrange(130, 140)}')
-nine_acc = int(f'{random.randrange(150, 160)}')
-ten_acc = int(f'{random.randrange(170, 180)}')
-eleven_acc = int(f'{random.randrange(190, 200)}')
-twelve_acc = int(f'{random.randrange(210, 220)}')
-thirteen_acc = int(f'{random.randrange(230, 240)}')
-Fourteen_acc = int(f'{random.randrange(250, 260)}')
-Fifteen_acc = int(f'{random.randrange(270, 280)}')
+first_acc = int(f'{random.randrange(5, 8)}')
+second_acc = int(f'{random.randrange(9, 17)}')
+third_acc = int(f'{random.randrange(24, 32)}')
+fourth_acc = int(f'{random.randrange(40, 49)}')
+five_acc = int(f'{random.randrange(60, 70)}')
+six_acc = int(f'{random.randrange(80, 90)}')
+seven_acc = int(f'{random.randrange(99, 108)}')
+eight_acc = int(f'{random.randrange(115, 126)}')
+nine_acc = int(f'{random.randrange(135, 144)}')
+ten_acc = int(f'{random.randrange(153, 162)}')
+eleven_acc = int(f'{random.randrange(171, 180)}')
+twelve_acc = int(f'{random.randrange(191, 199)}')
+thirteen_acc = int(f'{random.randrange(203, 218)}')
+Fourteen_acc = int(f'{random.randrange(225, 235)}')
+Fifteen_acc = int(f'{random.randrange(243, 255)}')
 
 user_setting_dict = {
     "profile1": {
-        "login": "Traditional_Pay_5782",
-        "password": "x0Yr0Ob8Oz3Ep6Fn1",
+        "login": "Competitive-Read-97",
+        "password": "O6O7b5v2y5v9e",
         "PROXY": "154.7.203.9",
         "HOST": 64676,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": first_acc,
-        "window size": "1536,864",
-        "user-agent": "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:109.0) Gecko/20100101 Firefox/109.0",
+        "window size": "2560,1440",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 OPR/94.0.4606.65",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile2": {
-        "login": "Possible-Leader-4976",
-        "password": "e9FMAygVeh4AmUF",
+        "login": "No_Expert_823",
+        "password": "V4U186s0n1s0D7O7",
         "PROXY": "5.252.188.227",
         "HOST": 61604,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": second_acc,
-        "window size": "1366,768",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+        "window size": "1600,1024",
+        "user-agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)",
         "timezoneId": "America/Los_Angeles",
         "timeOffset": -480
     },
     "profile3": {
-        "login": "Routine_Garage_1200",
-        "password": "n0Lg6Iu3Ut0Ec3Av0",
+        "login": "Terrible_Can_564",
+        "password": "F0A7z9c3n1g5f0y",
         "PROXY": "192.241.68.140",
         "HOST": 8000,
         "PROXY_USER": "qQdd4u",
         "PROXY_PASS": "rN8LQs",
         "randomtime_start": third_acc,
-        "window size": "1536,864",
-        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2; rv:109.0) Gecko/20100101 Firefox/109.0",
+        "window size": "2560,1440",
+        "user-agent": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile4": {
-        "login": "Character_Bag_1961",
-        "password": "b9Ur8Uy1Uq3Nr1Bx6",
+        "login": "Lanky_Regular_830",
+        "password": "U9A411q9u4c1Z0H2",
         "PROXY": "154.30.209.155",
         "HOST": 8000,
         "PROXY_USER": "qQdd4u",
         "PROXY_PASS": "rN8LQs",
         "randomtime_start": fourth_acc,
-        "window size": "1600,900",
-        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+        "window size": "1920,1080",
+        "user-agent": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)",
         "timezoneId": "America/Chicago",
         "timeOffset": -360
     },
@@ -208,41 +208,41 @@ user_setting_dict = {
         "timeOffset": -300
     },
     "profile10": {
-        "login": "Grand-Associate-7174",
-        "password": "j5Um2Ow0Eq2If7Mx6",
+        "login": "Tall-Performance-79",
+        "password": "E0U6l7y2l8r3m9j0p",
         "PROXY": "192.241.68.161",
         "HOST": 8000,
         "PROXY_USER": "qQdd4u",
         "PROXY_PASS": "rN8LQs",
-        "randomtime_start": ten_acc,
-        "window size": "1280,1024",
-        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.69",
+        "randomtime_start": "ten_acc",
+        "window size": "1536,864",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Vivaldi/5.6.2867.62",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile11": {
-        "login": "Natural-College-3507",
-        "password": "tp1Og0Uy2Pu7Gt9Nb3",
+        "login": "AssistNo757",
+        "password": "A3I1g6t3b0e4g",
         "PROXY": "192.241.68.26",
         "HOST": 8000,
         "PROXY_USER": "qQdd4u",
         "PROXY_PASS": "rN8LQs",
-        "randomtime_start": eleven_acc,
-        "window size": "1920,1080",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 OPR/94.0.4606.65",
+        "randomtime_start": "eleven_acc",
+        "window size": "1600,900",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Vivaldi/5.6.2867.62",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile12": {
-        "login": "CharacterAmount7033",
-        "password": "qp4Ih8Om2Ug1Iv4Uz7",
+        "login": "InevitableGreen140",
+        "password": "E1A5z7f9l5u4c",
         "PROXY": "192.241.68.62",
         "HOST": 8000,
         "PROXY_USER": "qQdd4u",
         "PROXY_PASS": "rN8LQs",
-        "randomtime_start": twelve_acc,
-        "window size": "1366,768",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 OPR/94.0.4606.65",
+        "randomtime_start": "twelve_acc",
+        "window size": "1280,1024",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 OPR/94.0.4606.65",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
@@ -520,41 +520,41 @@ user_setting_dict = {
         "timeOffset": -480
     },
     "profile34": {
-        "login": "One-Journalist7364",
-        "password": "u0Vv4Xy0Zr5Wm1Tj6",
+        "login": "EmploymentNo174",
+        "password": "OO1f0m0j2c5a9x9o",
         "PROXY": "109.94.218.68",
         "HOST": 63384,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": fourth_acc,
-        "window size": "1600,1024",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/109.0",
+        "window size": "1280,1024",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Vivaldi/5.6.2867.62",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile35": {
-        "login": "Express-Tax7997",
-        "password": "g6Ej6Ji4Ut8Yx9Zn35",
+        "login": "Technical-Response6",
+        "password": "ape0AO808umh0",
         "PROXY": "193.160.217.65",
         "HOST": 63252,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": five_acc,
-        "window size": "2560,1440",
-        "user-agent": "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/109.0",
+        "window size": "1600,900",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile36": {
-        "login": "Routine-Rice1798",
-        "password": "Fl4Io1Am1Kv2Ao3Ij521",
+        "login": "Known_Apartment583",
+        "password": "A9Y5u1l7zl1s1",
         "PROXY": "212.193.136.80",
         "HOST": 62184,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": six_acc,
-        "window size": "1024,768",
-        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2; rv:109.0) Gecko/20100101 Firefox/109.0",
+        "window size": "1280,1024",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 YaBrowser/23.1.0 Yowser/2.5 Safari/537.36",
         "timezoneId": "America/Los_Angeles",
         "timeOffset": -480
     },
@@ -572,18 +572,19 @@ user_setting_dict = {
         "timeOffset": -480
     },
     "profile38": {
-        "login": "Ok-Neighborhood-7265",
-        "password": "u1Oo0Mi8Oh9Wu7Ru7",
+        "login": "Majestic-Grape631",
+        "password": "Q1E4g0l5t1j1c2i2o",
         "PROXY": "195.19.213.224",
         "HOST": 64824,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": eight_acc,
-        "window size": "1680,1050",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+        "window size": "1536,864",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/109.0",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
+
     "profile39": {
         "login": "Boring_Strike_8915",
         "password": "oa2Ux5Ui4Ng6Yh2Ew7",
@@ -598,15 +599,15 @@ user_setting_dict = {
         "timeOffset": -300
     },
     "profile40": {
-        "login": "No-Collection1533",
-        "password": "x8Gs6Ca5Ak8Wk0Ne2",
+        "login": "Alarmed-Reference-7",
+        "password": "O5Z2a7d6y1m1o9u1",
         "PROXY": "194.190.170.229",
         "HOST": 63268,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": ten_acc,
-        "window size": "1280,1024",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+        "window size": "1366,768",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
@@ -624,15 +625,15 @@ user_setting_dict = {
         "timeOffset": -300
     },
     "profile42": {
-        "login": "Dry-Land-2298",
-        "password": "v4Lh6Ip7Ya2Uf3Ut5",
+        "login": "Zealousideal_Fox3",
+        "password": "P7U600l3h9r2N9V5",
         "PROXY": "62.76.147.168",
         "HOST": 61734,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": twelve_acc,
-        "window size": "1280,1024",
-        "user-agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)",
+        "window size": "1024,768",
+        "user-agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/109.0",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
@@ -1053,15 +1054,15 @@ user_setting_dict = {
         "timeOffset": -300
     },
     "profile75": {
-        "login": "Exciting-Leader-4220",
-        "password": "l5Ru4So3Yz8Yk2Mk9",
+        "login": "Status_Chance_65",
+        "password": "V0O107e5o8u5O4O8",
         "PROXY": "154.13.39.165",
         "HOST": 62102,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": Fifteen_acc,
-        "window size": "1680,1050",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 OPR/94.0.4606.65",
+        "window size": "1536,864",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Vivaldi/5.6.2867.62",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
@@ -1183,41 +1184,41 @@ user_setting_dict = {
         "timeOffset": -300
     },
     "profile85": {
-        "login": "Overall_Dentist3793",
-        "password": "ig3Yv4Ov0Ss4Ac9Ox86",
+        "login": "Inevitable_Basil_153",
+        "password": "O1F169a1w6l1O7B3",
         "PROXY": "154.13.45.120",
         "HOST": 62786,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": ten_acc,
-        "window size": "1280,720",
-        "user-agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)",
+        "window size": "2560,1440",
+        "user-agent": "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:109.0) Gecko/20100101 Firefox/109.0",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile86": {
-        "login": "Swimming_Ad_9583",
-        "password": "Iy6Kg5Ti4Eg4Lu3Lc615",
+        "login": "BudgetShot972",
+        "password": "G5U3v3l2k2l9x",
         "PROXY": "154.13.46.251",
         "HOST": 61918,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": eleven_acc,
-        "window size": "1280,1024",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+        "window size": "1600,1024",
+        "user-agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/109.0",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
     "profile87": {
-        "login": "Grand_Zombie1759",
-        "password": "VglBpd6zUwa0krNG",
+        "login": "Timely_Lobster307",
+        "password": "I2U4w4t7ep7z3",
         "PROXY": "154.13.47.13",
         "HOST": 62208,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": twelve_acc,
         "window size": "1440,900",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.69",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },
@@ -1326,15 +1327,15 @@ user_setting_dict = {
         "timeOffset": -300
     },
     "profile96": {
-        "login": "No-Wear-7296",
-        "password": "A3A616c0u0m7W7E4",
+        "login": "Repulsive_Cow_51",
+        "password": "E0G4p8q0bt8x5",
         "PROXY": "154.7.196.27",
         "HOST": 61844,
         "PROXY_USER": "B9MFUbBD",
         "PROXY_PASS": "XdrQsF3T",
         "randomtime_start": six_acc,
-        "window size": "1600,900",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Vivaldi/5.6.2867.62",
+        "window size": "1440,900",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15",
         "timezoneId": "America/New_York",
         "timeOffset": -300
     },

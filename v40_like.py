@@ -99,7 +99,7 @@ class UpVote(SettingAccount):
 
         # Счетчик на выход из бесконечного цикла, в случае ошибки
         self.calls_count += 1
-        if self.calls_count >= 300:
+        if self.calls_count >= 200:
             print(f'Account{self.count}: [-] Не смог найти пост')
             self.close_browser()
             self.calls_count = 0
@@ -134,11 +134,43 @@ class UpVote(SettingAccount):
             print(f'Account{self.count}: [-] НЕ удалось открыть пост!')
             print(f'Account{self.count}: {e}')
 
+    def search_post_with_title_name_for_top_script(self, post_title):
+
+        # Счетчик на выход из бесконечного цикла, в случае ошибки
+        self.calls_count += 1
+        if self.calls_count >= 100:
+            print(f'Account{self.count}: [-] Не смог найти пост')
+            self.close_browser()
+            self.calls_count = 0
+
+        # Перменные для поиска
+        random_step = int(random.randint(81, 158))
+
+        # Если поста не видно на странице, прокручиваем страницу до отображения поста
+        try:
+            scroll = self.browser.find_element(By.PARTIAL_LINK_TEXT, post_title)
+            print(f'Account{self.count}: [+] Пост появился на странице')
+        except Exception:
+            self.browser.execute_script(f"window.scrollBy(0, {random_step});")
+            self.random_time_for_scroll()
+            self.search_post_with_title_name_for_top_script(post_title)
+            return
+
+        try:
+            # Открываем пост
+            self.move_and_click_partial_text(post_title)
+            print(f'Account{self.count}: [+] Пост открыт!')
+
+        except Exception as e:
+            print(f'Account{self.count}: [-] НЕ удалось открыть пост!')
+            print(f'Account{self.count}: {e}')
+
+
     def search_post_with_title_name_not_open(self, post_title):
 
         # Счетчик на выход из бесконечного цикла, в случае ошибки
         self.calls_count += 1
-        if self.calls_count >= 300:
+        if self.calls_count >= 150:
             print(f'Account{self.count}: [-] Не смог найти пост')
             self.close_browser()
             self.calls_count = 0

@@ -56,15 +56,15 @@ class SettingAccount(StartLoginQuit):
         # midle
         # return time.sleep(random.randint(1500, 6000) / 1000)
         # agressive
-        return time.sleep(random.randint(1500, 4000) / 1000)
+        return time.sleep(random.randint(1500, 3500) / 1000)
 
     @staticmethod
     def random_time_sleep_large():
-        return time.sleep(random.randint(8000, 15000) / 1000)
+        return time.sleep(random.randint(6000, 13000) / 1000)
 
     @staticmethod
     def random_time_sleep_big():
-        return time.sleep(random.randint(20, 30))
+        return time.sleep(random.randint(15, 20))
 
     def click_xpath(self, element_on_page):
         try:

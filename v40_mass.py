@@ -5,7 +5,7 @@ from v40_setting_account import SettingAccount
 from v40_like import UpVote
 from v40_walker import Walker
 from v40_smart_bot import SmartBot
-from Data.data import user_setting_dict
+from Data.data_six_acc import user_setting_dict
 from multiprocessing import Pool
 import datetime
 import time
@@ -20,9 +20,33 @@ class Mass:  # Класс для массовых действий
     def start_smart_top(i):
         my_bot = SmartBot(i)
 
-        url = 'https://www.reddit.com/r/Nudes'
-        sub_name = 'Nudes'
-        post_title_like = "Love getting nude in public 😅"
+        url = 'https://www.reddit.com/r/petite'
+        sub_name = 'petite'
+        post_title_like = "will you come play in the kitchen with me"
+
+        try:
+            my_bot.start_browser()
+            my_bot.open_communities_url(url)
+            my_bot.random_subscribe()
+            my_bot.start_sub_scroll()
+            my_bot.check_post_in_page(post_title_like)
+
+            if my_bot.flag_check_post == 1:
+                my_bot.tab_top_script(url, post_title_like)
+            else:
+                my_bot.tab_new_script(sub_name, post_title_like)
+
+        except Exception as e:
+            my_bot.close_browser()
+            print(f'Account{my_bot.count}({my_bot.username}: {datetime.datetime.now()}): [-] ПРОБЛЕМЫ! ВЫЛЕТЕЛ ПО ПРИЧИНЕ: {e}')
+
+    @staticmethod
+    def start_smart_top_not_checker(i):
+        my_bot = SmartBot(i)
+
+        url = 'https://www.reddit.com/r/PerfectBody'
+        sub_name = 'PerfectBody'
+        post_title_like = "Today I'm so horny and wet, you want to see it"
 
         try:
             my_bot.start_browser()
@@ -223,6 +247,17 @@ class Mass:  # Класс для массовых действий
         except Exception as e:
             print(f'Проблемы с тестом настроек: {e}')
 
+    @staticmethod  # Старт проверки настроек драйвера
+    def looks_movie(i):
+        try:
+            bot = SmartBot(i)
+            bot.start_browser()
+
+            time.sleep(10000)
+
+        except Exception as e:
+            print(f'Проблемы с кинотеатром: {e}')
+
 
 def main():
     try:  # Переменные для пула
@@ -241,15 +276,15 @@ def main():
                     p.map(Mass.test_driver_settings, loading_profile_data)
 
         if start_question == '2':
-            min_num_account = int(input('Введи диапазон аккаунтов, для лайкинга! \n С какого аккаунта стартуем? (Напиши цифру): '))
-            max_num_account = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1
-            number_of_active_profiles = int(max_num_account - min_num_account)
-            a = int(number_of_active_profiles + 1)
-            loading_profile_data = [i for i in range(min_num_account, max_num_account)]  # Генерация списка аккаунтов
 
-            if loading_profile_data is not None:
+            account_numbers = input('Введи номера аккаунтов, через запятую: ').split(',')
+            account_numbers = [int(num) for num in account_numbers]
+            number_of_active_profiles = len(account_numbers)
+
+            if account_numbers is not None:
                 with Pool(number_of_active_profiles) as p:  # МУЛЬТИПРОЦЕССИНГ
-                    p.map(Mass.start_mass_setting_account, loading_profile_data)
+                    p.map(Mass.start_mass_setting_account, account_numbers)
+
 
         if start_question == '3':
 
@@ -269,18 +304,16 @@ def main():
             Mass.setting_one_account_hard(number_account)
 
         if start_question == '5':
-            Mass.check_acc(1)
+            Mass.check_acc(2)
 
         if start_question == '6':
-            min_num_account = int(input('Введи диапазон аккаунтов, для лайкинга! \n С какого аккаунта стартуем? (Напиши цифру): '))
-            max_num_account = int(input('На каком аккаунте закончим? (Напиши цифру): ')) + 1
-            number_of_active_profiles = int(max_num_account - min_num_account)
+            account_numbers = input('Введи номера аккаунтов, через запятую: ').split(',')
+            account_numbers = [int(num) for num in account_numbers]
+            number_of_active_profiles = len(account_numbers)
 
-            loading_profile_data = [i for i in range(min_num_account, max_num_account)]  # Генерация списка аккаунтов
-
-            if loading_profile_data is not None:
+            if account_numbers is not None:
                 with Pool(number_of_active_profiles) as p:  # МУЛЬТИПРОЦЕССИНГ
-                    p.map(Mass.setting_one_account_hard, loading_profile_data)
+                    p.map(Mass.setting_one_account_hard, account_numbers)
 
         if start_question == '7':
             # Список диапазонов аккаунтов
@@ -322,11 +355,15 @@ def main():
 
         if start_question == '10':
             # Список диапазонов аккаунтов
-            ranges = [(1, 16), (16, 31), (31, 46), (46, 61), (61, 76), (76, 91), (91, 103)]
-            random.shuffle(ranges)
-            print(ranges)
+            ranges = [(1, 7), (7, 13), (13, 19), (19, 25), (25, 31), (31, 37), (37, 43), (43, 49), (49, 55), (55, 61),
+                      (61, 67), (67, 73), (73, 79), (79, 85), (85, 91), (91, 97), (97, 102)]
+            lst1 = [(1, 13), (13, 25), (25, 37), (37, 49), (49, 61), (61, 73), (73, 85), (85, 97), (97, 102)]
+            lst2 = [(1, 7), (7, 19), (19, 31), (31, 43), (43, 55), (55, 67), (67, 79), (79, 91), (91, 102)]
+            selected_list = random.choice([lst1, lst2])
+            random.shuffle(selected_list)
+            print(selected_list)
 
-            for start, end in ranges:
+            for start, end in selected_list:
                 number_of_active_profiles = end - start + 1
                 loading_profile_data = [i for i in range(start, end)]
 
@@ -360,18 +397,9 @@ def main():
                         p.map(Mass.start_smart_top, [1, 2])
 
         if start_question == '13':
-            # Список диапазонов аккаунтов
-            ranges = [(1, 16), (16, 31), (31, 46), (46, 61), (61, 76), (76, 91), (91, 103)]
-            random.shuffle(ranges)
-            print(ranges)
+            Mass.looks_movie(1)
 
-            for start, end in ranges:
-                number_of_active_profiles = end - start + 1
-                loading_profile_data = [i for i in range(start, end)]
 
-                if loading_profile_data is not None:
-                    with Pool(2) as p:
-                        p.map(Mass.start_mass_comment_test, [3, 4])
     except Exception as e:
         print(f'Проблемы с мультипроцессингом: {e}')
 

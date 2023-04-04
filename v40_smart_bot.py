@@ -143,8 +143,39 @@ class SmartBot(Walker):
         print(f'Account{self.count}({self.username}: {datetime.datetime.now()}): [+] КОНЕЦ СКРИПТА, РАБОТА ЧЕРЕЗ NEW')
 
     def tab_top_script(self, url, post_title_like):
+        self.search_post_with_title_name_for_top_script(post_title_like)
+        self.get_post_id()
+        self.get_post_url()
+        self.check_like()
+        self.write_comment()
+        self.save_or_share_or_pass()
 
-        self.random_time_sleep_big()
+        if self.random_number_for_save < 0.5:
+            self.open_communities_url(url)
+            self.search_post_with_title_name_not_open(post_title_like)
+            self.smart_dis()
+            self.like_count()
+            self.close_browser()
+            print(f'Account{self.count}({self.username}: {datetime.datetime.now()}): [+] КОНЕЦ СКРИПТА, РАБОТА ЧЕРЕЗ TOP (SAVE)')
+        else:
+            if random.random() < 0.5:
+                self.open_authors_page()
+                self.random_follow_author()
+                self.open_communities_url(url)
+                self.search_post_with_title_name_not_open(post_title_like)
+                self.smart_dis()
+                self.like_count()
+                self.close_browser()
+                print(f'Account{self.count}({self.username}: {datetime.datetime.now()}): [+] КОНЕЦ СКРИПТА, РАБОТА ЧЕРЕЗ TOP (FOLLOW AUTHOR)')
+            else:
+                self.close_post()
+                self.smart_dis()
+                self.like_count()
+                self.close_browser()
+                print(f'Account{self.count}({self.username}: {datetime.datetime.now()}): [+] КОНЕЦ СКРИПТА, РАБОТА ЧЕРЕЗ TOP (CLEAR)')
+
+
+    def tab_top_script_not_checker(self, url, post_title_like):
         self.search_post_with_title_name_for_top_script(post_title_like)
         self.get_post_id()
         self.get_post_url()

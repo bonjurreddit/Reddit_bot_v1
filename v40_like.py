@@ -99,13 +99,13 @@ class UpVote(SettingAccount):
 
         # Счетчик на выход из бесконечного цикла, в случае ошибки
         self.calls_count += 1
-        if self.calls_count >= 200:
+        if self.calls_count >= 120:
             print(f'Account{self.count}: [-] Не смог найти пост')
             self.close_browser()
             self.calls_count = 0
 
         # Перменные для поиска
-        random_num = int(random.randint(100, 200))
+
         random_step = int(random.randint(81, 158))
 
         # Если поста не видно на странице, прокручиваем страницу до отображения поста
@@ -119,12 +119,6 @@ class UpVote(SettingAccount):
             return
 
         try:
-            # self.random_time_sleep_fast()
-            # # Аккуратно подводим к посту
-            # scroll_position = scroll.location['y'] - random_num
-            # for i in range(0, scroll_position, random_step):
-            #     self.browser.execute_script(f"window.scrollBy(0, {random_step})")
-            #     self.random_time_for_send_keys()  # добавляем задержку между прокрутками
 
             # Открываем пост
             self.move_and_click_partial_text(post_title)
@@ -138,7 +132,7 @@ class UpVote(SettingAccount):
 
         # Счетчик на выход из бесконечного цикла, в случае ошибки
         self.calls_count += 1
-        if self.calls_count >= 100:
+        if self.calls_count >= 80:
             print(f'Account{self.count}: [-] Не смог найти пост')
             self.close_browser()
             self.calls_count = 0
@@ -170,7 +164,7 @@ class UpVote(SettingAccount):
 
         # Счетчик на выход из бесконечного цикла, в случае ошибки
         self.calls_count += 1
-        if self.calls_count >= 150:
+        if self.calls_count >= 80:
             print(f'Account{self.count}: [-] Не смог найти пост')
             self.close_browser()
             self.calls_count = 0

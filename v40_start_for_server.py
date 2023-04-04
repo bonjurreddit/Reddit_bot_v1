@@ -1,7 +1,7 @@
 from v_40_settings_for_server import SettingBrowserClass
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from Data.data import user_setting_dict
+from Data.data_six_acc import user_setting_dict
 import time
 import random
 import pickle

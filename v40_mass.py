@@ -20,9 +20,9 @@ class Mass:  # Класс для массовых действий
     def start_smart_top(i):
         my_bot = SmartBot(i)
 
-        url = 'https://www.reddit.com/r/petite'
-        sub_name = 'petite'
-        post_title_like = "will you come play in the kitchen with me"
+        url = 'https://www.reddit.com/r/NSFWGirl'
+        sub_name = 'PerfectBody'
+        post_title_like = "Will you eat me before you fuck me?"
 
         try:
             my_bot.start_browser()
@@ -113,13 +113,13 @@ class Mass:  # Класс для массовых действий
                 random_num = random.random()
                 bot.scrolling_and_open_post()
 
-                if random_num < 0.15:
+                if random_num < 0.1:
                     bot.script_like_post_and_save()
-                if 0.15 < random_num < 0.5:
+                if 0.1 < random_num < 0.5:
                     bot.close_post()
                 if 0.5 < random_num < 0.85:
                     bot.script_open_author()
-                if 0.85 < random_num < 1:
+                if 0.9 < random_num < 1:
                     bot.script_like_post_and_open_author()
 
             print(f"Account{bot.count}: {datetime.datetime.now()}:: [+]  Закончил гулять!")
@@ -342,10 +342,13 @@ def main():
 
         if start_question == '9':
             # Список диапазонов аккаунтов
-            ranges = ranges = [(1, 16), (16, 31), (31, 46), (46, 61), (61, 76), (76, 91), (91, 103)]
-            random.shuffle(ranges)
-            print(ranges)
-            for start, end in ranges:
+            lst1 = [(1, 13), (13, 25), (25, 37), (37, 49), (49, 61), (61, 73), (73, 85), (85, 97), (97, 102)]
+            lst2 = [(1, 7), (7, 19), (19, 31), (31, 43), (43, 55), (55, 67), (67, 79), (79, 91), (91, 102)]
+            selected_list = random.choice([lst1, lst2])
+            random.shuffle(selected_list)
+            print(selected_list)
+
+            for start, end in selected_list:
                 number_of_active_profiles = end - start + 1
                 loading_profile_data = [i for i in range(start, end)]
 
